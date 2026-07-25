@@ -31,7 +31,7 @@ Full map with one-liners: [`references/registry.md`](references/registry.md).
 - **Seven departments, one door** — `/omniskill` reads the job, recommends a crew, and loads only that specialist. Real projects cross crews, so it sequences them (Finance → Design → Marketing → Legal → Ops) and loads each only when it gets there.
 - **Costs 8 skill-listing entries, not 42** — the routers carry descriptions; all 42 leaves are `disable-model-invocation: true`. They cost **zero** listing budget and stay fully invocable by name. On a machine already running several plugins, this is the difference between adding a workforce and degrading every skill you own.
 - **Playbooks, not prompt-shapers** — 31 skills are full working methods. DCF enforces *unlevered means unlevered* and sanity-bands the terminal value. LBO attributes IRR across deleveraging, EBITDA growth, and multiple expansion. Contract review ranks findings by severity against deal size. These are methods you'd actually follow.
-- **Nothing mature gets re-implemented** — 11 skills are thin adapters. Six delegate to skills already bundled with Claude Code; four to optional companion plugins, and they tell you the install command if it's missing. No vendored copies, no drift from upstream.
+- **Nothing mature gets re-implemented** — 31 skills are written here; the other 11 wrap real upstream work. Eight of those ride along in the box, vendored **unmodified** with their licenses intact, so a fresh machine gets the whole workforce from one install and fixes still go upstream.
 - **Offers itself, never assumes** — a hook notices new-project intent and *suggests*. Claude then asks. Every activation goes through a question you answer.
 - **Safety is not an upsell** — Finance and Legal state plainly that they are analysis, not licensed advice. Marketing refuses to build dark patterns regardless of measured lift.
 
@@ -55,15 +55,14 @@ claude plugin install omniskill@omniskill
 claude plugin marketplace add ./OmniSkill && claude plugin install omniskill@omniskill
 ```
 
-### <img src="assets/icons/layers.svg" width="17" align="absmiddle" alt="" /> Companions (optional)
+That single install is the whole workforce. **Eight upstream skills ship inside it** — `superpowers` (all 14), `canvas-design` (with its 54 OFL fonts), `web-artifacts`, `slack-gif`, `mcp-builder`, `frontend-design`, `skill-creator`, and `ui-ux-pro-max`. Nothing to chase down.
 
-Four Design and Developer skills delegate to plugins from the official marketplace. Install them to light those four up:
+### <img src="assets/icons/layers.svg" width="17" align="absmiddle" alt="" /> The three exceptions
 
-```bash
-claude plugin install superpowers@claude-plugins-official context7@claude-plugins-official frontend-design@claude-plugins-official skill-creator@claude-plugins-official
-```
-
-Skip it and those four adapters simply tell you the install command when you reach them — nothing else is affected. Six more (`mcp-builder`, `web-artifacts`, `canvas-design`, `slack-gif`, `xlsx`, `docx`) already ship with Claude Code and need nothing.
+| Skill | Why | What to do |
+|---|---|---|
+| `xlsx`, `docx` | **Source-available and proprietary** — cannot be redistributed in an MIT plugin | Ship with Claude Code in most setups. Otherwise `claude plugin marketplace add anthropics/skills` |
+| `context7` | An MCP server, not skill content | The adapter offers to set it up when you first need it |
 
 > **Restart Claude Code after installing.** Hooks load at session start, so new-project detection stays dormant until you do.
 
@@ -150,4 +149,8 @@ The **Marketing** crew will not build dark patterns. Fake countdowns, confirmsha
 
 ## <img src="assets/icons/file.svg" width="20" align="absmiddle" alt="" /> License
 
-[MIT](LICENSE) — companion plugins ([superpowers](https://github.com/anthropics/claude-plugins-public), [context7](https://context7.com), [frontend-design](https://github.com/anthropics/claude-plugins-public), [skill-creator](https://github.com/anthropics/claude-plugins-public)) remain under their own licenses.
+OmniSkill is [MIT](LICENSE).
+
+Eight bundled skills stay under their own licenses — MIT for [superpowers](https://github.com/obra/superpowers), Apache-2.0 for the [anthropics/skills](https://github.com/anthropics/skills) and [claude-plugins-public](https://github.com/anthropics/claude-plugins-public) skills, and SIL OFL for the 54 fonts in `canvas-design`. Every copy is unmodified and ships its license file. Full attribution: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+`xlsx` and `docx` are deliberately **not** bundled — they are source-available and proprietary, so redistribution here would not be permitted.
