@@ -1,6 +1,6 @@
 ---
 name: superpowers
-description: Full skill pack for planning + TDD. OmniSkill Developers crew — adapter that delegates to the Superpowers skill.
+description: Full skill pack for planning + TDD. OmniSkill Developers crew — bundled copy of the Superpowers library (14 skills).
 disable-model-invocation: true
 ---
 
@@ -8,22 +8,41 @@ disable-model-invocation: true
 
 > Full skill pack for planning + TDD · OmniSkill Developers crew
 
-This capability is provided by **Superpowers**, an optional companion plugin from the official marketplace.
+**Bundled — nothing to install.** All 14 Superpowers skills ship inside this plugin.
 
-## Use it
+## Pick the one you need
 
-Invoke /superpowers and follow it. That skill is the authority here — this file only routes to it and adds the OmniSkill house rules below.
+| Skill | Use when |
+|---|---|
+| `brainstorming` | turning a vague idea into a concrete plan |
+| `writing-plans` | writing an implementation plan worth following |
+| `executing-plans` | working through a plan already written |
+| `test-driven-development` | red/green TDD on a real feature |
+| `systematic-debugging` | a bug that has resisted the obvious fixes |
+| `verification-before-completion` | confirming work is actually done |
+| `requesting-code-review` | getting a change reviewed |
+| `receiving-code-review` | acting on review feedback |
+| `subagent-driven-development` | splitting work across subagents |
+| `dispatching-parallel-agents` | running agents concurrently |
+| `using-git-worktrees` | isolating parallel work in worktrees |
+| `finishing-a-development-branch` | landing and cleaning up a branch |
+| `writing-skills` | authoring a new skill |
+| `using-superpowers` | the index of the whole library |
+
+## Load it
+
+Read `${CLAUDE_SKILL_DIR}/vendor/<skill>/SKILL.md` and follow it — for example `vendor/test-driven-development/SKILL.md`.
+
+Start at `vendor/using-superpowers/SKILL.md` if unsure which applies; it is the library's own index.
+
+Resolve any relative path inside those skills against `${CLAUDE_SKILL_DIR}/vendor/`, not the working directory.
 
 ## House rules
 
-Use it for feature work that deserves a plan and a test before code. It carries its own planning and TDD workflow — follow that, do not improvise a parallel one.
+Use this for feature work that deserves a plan and a test before code. Each skill carries its own workflow — follow it rather than improvising a parallel one.
 
-## If it is missing
+`brainstorming` → `writing-plans` → `executing-plans` is the intended spine for anything substantial. TDD and debugging are the two most reached-for on their own.
 
-Install it with:
+## Attribution
 
-```bash
-claude plugin install superpowers@claude-plugins-official
-```
-
-OmniSkill does not require it — this adapter is the only skill affected.
+Vendored verbatim from [obra/superpowers](https://github.com/obra/superpowers) at commit `896224c`, by Jesse Vincent, licensed **MIT**. The upstream license ships at `${CLAUDE_SKILL_DIR}/vendor/LICENSE`. Unmodified — upstream is the place to send fixes.

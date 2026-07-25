@@ -5,3 +5,17 @@
 *.mjs text eol=lf
 *.sh  text eol=lf
 *.svg text eol=lf
+
+# Binary assets — never apply line-ending conversion. The vendored
+# canvas-design fonts are corrupted by it.
+*.ttf  binary
+*.otf  binary
+*.woff binary
+*.woff2 binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.pdf  binary
+*.zip  binary
+*.skill binary

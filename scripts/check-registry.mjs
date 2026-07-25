@@ -89,8 +89,30 @@ for (const r of ROUTERS) {
   else if (meta.get(r)?.disabled) errors.push(`router '${r}' must NOT set disable-model-invocation`);
 }
 
+// --- invariant 3: vendored copies must stay nested, never at skills/<name>/SKILL.md
+// Auto-discovery scans skills/*/SKILL.md. Anything deeper is invisible to it, which
+// is what lets 8 vendored libraries ship without adding listing entries. A vendored
+// SKILL.md promoted to depth 1 would silently register as a new skill.
+let vendored = 0;
+for (const name of onDisk) {
+  const vdir = join(SKILLS, name, 'vendor');
+  if (!existsSync(vdir)) continue;
+  const stack = [vdir];
+  while (stack.length) {
+    const dir = stack.pop();
+    for (const d of readdirSync(dir, { withFileTypes: true })) {
+      if (d.isDirectory()) stack.push(join(dir, d.name));
+      else if (d.name === 'SKILL.md') vendored++;
+    }
+  }
+  if (!existsSync(join(SKILLS, name, 'SKILL.md'))) {
+    errors.push(`${name}: has vendor/ but no adapter SKILL.md at depth 1`);
+  }
+}
+
 // --- report
 console.log(`skills on disk : ${onDisk.length} (${ROUTERS.length} routers + ${leaves.length} leaves)`);
+console.log(`vendored SKILLs: ${vendored} (nested under vendor/ — must not appear in the listing)`);
 console.log(`registry entries: ${registered.size}`);
 console.log(`model-invocable : ${invocable.length}  [${invocable.join(', ')}]`);
 
