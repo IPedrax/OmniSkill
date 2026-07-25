@@ -1,0 +1,31 @@
+{
+  "description": "OmniSkill new-project detector. Injects a suggestion to OFFER the workforce; never activates anything on its own.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/detect-new-project.mjs"],
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/detect-new-project.mjs"],
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

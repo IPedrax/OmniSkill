@@ -1,0 +1,34 @@
+{
+  "name": "omniskill",
+  "version": "1.0.0",
+  "description": "Your Claude workforce: 42 skills across 7 departments (developers, design, marketing, social, finance, operations, legal) behind one router.",
+  "author": {
+    "name": "IPedrax",
+    "email": "pedragamesoficial@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "workforce",
+    "skills",
+    "router",
+    "finance",
+    "legal",
+    "marketing",
+    "design",
+    "operations"
+  ],
+  "dependencies": [
+    { "name": "superpowers", "marketplace": "claude-plugins-official" },
+    { "name": "context7", "marketplace": "claude-plugins-official" },
+    { "name": "frontend-design", "marketplace": "claude-plugins-official" },
+    { "name": "skill-creator", "marketplace": "claude-plugins-official" }
+  ],
+  "userConfig": {
+    "auto_suggest": {
+      "type": "boolean",
+      "title": "Offer OmniSkill when a new project starts",
+      "description": "When Claude detects you are starting a new project, it offers the OmniSkill workforce and waits for your answer. Nothing activates without your approval. Set to false to disable detection entirely.",
+      "default": true
+    }
+  }
+}

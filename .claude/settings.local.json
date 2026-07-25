@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls ~/.claude/skills/ 2>/dev/null | head -60; echo \"---PLUGINS---\"; ls ~/.claude/plugins/ 2>/dev/null)"
+    ]
+  }
+}

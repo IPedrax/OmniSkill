@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "omniskill",
+  "owner": {
+    "name": "IPedrax",
+    "email": "pedragamesoficial@gmail.com"
+  },
+  "metadata": {
+    "description": "The OmniSkill workforce: 42 skills across 7 departments (developers, design, marketing, social, finance, operations, legal), routed from one entry point."
+  },
+  "allowCrossMarketplaceDependenciesOn": ["claude-plugins-official"],
+  "plugins": [
+    {
+      "name": "omniskill",
+      "source": "./",
+      "category": "workflow",
+      "description": "Your Claude workforce: 42 skills across 7 departments (developers, design, marketing, social, finance, operations, legal) behind one router. Invoke with /omniskill, or let it offer itself when you start a new project."
+    }
+  ]
+}
