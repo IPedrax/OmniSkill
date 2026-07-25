@@ -1,0 +1,7 @@
+# Normalize line endings in the repo; check out native on Windows.
+* text=auto
+
+# Keep LF for files executed by a shell or Node.
+*.mjs text eol=lf
+*.sh  text eol=lf
+*.svg text eol=lf
