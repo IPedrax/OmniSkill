@@ -31,7 +31,7 @@ Full map with one-liners: [`references/registry.md`](references/registry.md).
 - **Seven departments, one door** — `/omniskill` reads the job, recommends a crew, and loads only that specialist. Real projects cross crews, so it sequences them (Finance → Design → Marketing → Legal → Ops) and loads each only when it gets there.
 - **Costs 8 skill-listing entries, not 42** — the routers carry descriptions; all 42 leaves are `disable-model-invocation: true`. They cost **zero** listing budget and stay fully invocable by name. On a machine already running several plugins, this is the difference between adding a workforce and degrading every skill you own.
 - **Playbooks, not prompt-shapers** — 31 skills are full working methods. DCF enforces *unlevered means unlevered* and sanity-bands the terminal value. LBO attributes IRR across deleveraging, EBITDA growth, and multiple expansion. Contract review ranks findings by severity against deal size. These are methods you'd actually follow.
-- **Nothing mature gets re-implemented** — 11 skills are thin adapters. Four companion plugins install automatically as declared dependencies; six more already ship with Claude Code. No vendored copies, no drift from upstream.
+- **Nothing mature gets re-implemented** — 11 skills are thin adapters. Six delegate to skills already bundled with Claude Code; four to optional companion plugins, and they tell you the install command if it's missing. No vendored copies, no drift from upstream.
 - **Offers itself, never assumes** — a hook notices new-project intent and *suggests*. Claude then asks. Every activation goes through a question you answer.
 - **Safety is not an upsell** — Finance and Legal state plainly that they are analysis, not licensed advice. Marketing refuses to build dark patterns regardless of measured lift.
 
@@ -55,9 +55,19 @@ claude plugin install omniskill@omniskill
 claude plugin marketplace add ./OmniSkill && claude plugin install omniskill@omniskill
 ```
 
-Four companions install alongside it automatically — `superpowers`, `context7`, `frontend-design`, and `skill-creator` from the official marketplace. Six more (`mcp-builder`, `web-artifacts`, `canvas-design`, `slack-gif`, `xlsx`, `docx`) already ship with Claude Code and need nothing.
+### <img src="assets/icons/layers.svg" width="17" align="absmiddle" alt="" /> Companions (optional)
+
+Four Design and Developer skills delegate to plugins from the official marketplace. Install them to light those four up:
+
+```bash
+claude plugin install superpowers@claude-plugins-official context7@claude-plugins-official frontend-design@claude-plugins-official skill-creator@claude-plugins-official
+```
+
+Skip it and those four adapters simply tell you the install command when you reach them — nothing else is affected. Six more (`mcp-builder`, `web-artifacts`, `canvas-design`, `slack-gif`, `xlsx`, `docx`) already ship with Claude Code and need nothing.
 
 > **Restart Claude Code after installing.** Hooks load at session start, so new-project detection stays dormant until you do.
+
+> **Requires Claude Code ≥ 2.1.71**, the version this is built and tested against.
 
 > **Prefer to let Claude install it?** Paste this into a new chat:
 > *"Install this Claude Code plugin for me from https://github.com/IPedrax/OmniSkill and walk me through anything you need."*
@@ -92,7 +102,11 @@ All 42 leaves are directly invocable by name.
 
 When you start a new project, a `UserPromptSubmit` hook notices and injects a *suggestion* — nothing more. It cannot load a skill and it cannot act; Claude asks you via a real question and waits. It fires **at most once per session**, only on wording that implies building something new (`"build me a new app"`, `"from scratch"`), and never on existing-codebase work (`"fix this bug"`, `"refactor this"`). Vague requests only trigger it in a directory that is genuinely empty.
 
-To turn it off entirely, set **"Offer OmniSkill when a new project starts"** to false in `/plugin`. No file editing.
+To turn it off entirely, set `OMNISKILL_AUTO_SUGGEST=false` in your environment, or in the `env` block of `~/.claude/settings.json`:
+
+```json
+{ "env": { "OMNISKILL_AUTO_SUGGEST": "false" } }
+```
 
 ---
 

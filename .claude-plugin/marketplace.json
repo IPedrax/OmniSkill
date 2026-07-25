@@ -8,7 +8,6 @@
   "metadata": {
     "description": "The OmniSkill workforce: 42 skills across 7 departments (developers, design, marketing, social, finance, operations, legal), routed from one entry point."
   },
-  "allowCrossMarketplaceDependenciesOn": ["claude-plugins-official"],
   "plugins": [
     {
       "name": "omniskill",

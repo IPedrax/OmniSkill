@@ -59,8 +59,9 @@ function isGreenfield(cwd) {
   }
 }
 
-// Fire at most once per session. CLAUDE_PLUGIN_DATA survives plugin updates;
-// fall back to the OS temp dir when it is not set.
+// Fire at most once per session. CLAUDE_PLUGIN_DATA survives plugin updates but
+// does not exist before ~v2.1.2xx, so the OS temp dir is the working default on
+// the 2.1.71 baseline. Session flags are disposable either way.
 function alreadyOffered(sessionId) {
   if (!sessionId) return false;
   const dir = join(process.env.CLAUDE_PLUGIN_DATA || tmpdir(), 'omniskill-offers');
@@ -84,9 +85,15 @@ function emit(event) {
   );
 }
 
-// The plugin's own userConfig toggle, exported to hooks by Claude Code.
+// Off switch. OMNISKILL_AUTO_SUGGEST works on every version; the
+// CLAUDE_PLUGIN_OPTION_* form is what Claude Code exports from a plugin
+// userConfig toggle, which needs a newer build than the 2.1.71 baseline.
+// Reading both means the /plugin toggle starts working on upgrade with no
+// change here.
 function enabled() {
-  const v = (process.env.CLAUDE_PLUGIN_OPTION_AUTO_SUGGEST || '').trim().toLowerCase();
+  const v = (process.env.OMNISKILL_AUTO_SUGGEST ?? process.env.CLAUDE_PLUGIN_OPTION_AUTO_SUGGEST ?? '')
+    .trim()
+    .toLowerCase();
   return !['false', 'no', 'off', '0'].includes(v);
 }
 

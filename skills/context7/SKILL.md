@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 > Pulls live, version-exact docs · OmniSkill Developers crew
 
-This capability is provided by **Context7**, an MCP server installed alongside OmniSkill as a plugin dependency.
+This capability is provided by **Context7**, an optional companion plugin from the official marketplace that runs as an MCP server.
 
 ## Use it
 
@@ -26,4 +26,4 @@ Install it with:
 claude plugin install context7@claude-plugins-official
 ```
 
-It is declared in this plugin's `dependencies`, so a reinstall of OmniSkill also restores it.
+OmniSkill does not require it — this adapter is the only skill affected.

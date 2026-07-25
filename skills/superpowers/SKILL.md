@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 > Full skill pack for planning + TDD · OmniSkill Developers crew
 
-This capability is provided by **Superpowers**, installed alongside OmniSkill as a plugin dependency.
+This capability is provided by **Superpowers**, an optional companion plugin from the official marketplace.
 
 ## Use it
 
@@ -26,4 +26,4 @@ Install it with:
 claude plugin install superpowers@claude-plugins-official
 ```
 
-It is declared in this plugin's `dependencies`, so a reinstall of OmniSkill also restores it.
+OmniSkill does not require it — this adapter is the only skill affected.

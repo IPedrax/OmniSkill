@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 > Scaffold your own skills · OmniSkill Developers crew
 
-This capability is provided by **Skill Creator**, installed alongside OmniSkill as a plugin dependency.
+This capability is provided by **Skill Creator**, an optional companion plugin from the official marketplace.
 
 ## Use it
 
@@ -26,4 +26,4 @@ Install it with:
 claude plugin install skill-creator@claude-plugins-official
 ```
 
-It is declared in this plugin's `dependencies`, so a reinstall of OmniSkill also restores it.
+OmniSkill does not require it — this adapter is the only skill affected.
