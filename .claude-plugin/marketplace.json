@@ -13,7 +13,7 @@
       "name": "omniskill",
       "source": "./",
       "category": "workflow",
-      "description": "Your Claude workforce: 42 skills across 7 departments (developers, design, marketing, social, finance, operations, legal) behind one router. Invoke with /omniskill, or let it offer itself when you start a new project."
+      "description": "Your Claude workforce: 44 skills across 7 departments (developers, design, marketing, social, finance, operations, legal) behind one router. Invoke with /omniskill, or let it offer itself when you start a new project."
     }
   ]
 }
