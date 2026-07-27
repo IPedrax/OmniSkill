@@ -22,8 +22,4 @@ Hand the chosen direction to `/omniskill:frontend-design` to implement, or `/omn
 
 ## Related
 
-For animation and motion work, the companion [motion-ui](https://github.com/IPedrax/motion-ui) skill installs separately and picks an engine (Framer Motion, GSAP, anime.js, Three.js) that fits the detected stack:
-
-```powershell
-irm https://raw.githubusercontent.com/IPedrax/motion-ui/main/install.ps1 | iex
-```
+For animation and motion work, hand off to `/omniskill:motion-ui` — also bundled, and it picks an engine (Framer Motion, GSAP, anime.js, Three.js) that fits the detected stack. Direction here first, motion there second.

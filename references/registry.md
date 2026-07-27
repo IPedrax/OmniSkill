@@ -5,9 +5,8 @@ Canonical map of the workforce. `scripts/check-registry.mjs` validates the tree 
 **Disposition** — how the leaf skill is implemented:
 
 - `authored` — a full playbook written into this plugin.
-- `dependency` — adapter; the real skill installs alongside OmniSkill via `plugin.json` `dependencies`.
-- `bundled` — adapter; the real skill already ships with Claude Code, nothing to install.
-- `local` — adapter; the real skill lives in the user's `~/.claude/skills/`, delegated to if present.
+- `vendored` — adapter + the real upstream skill bundled verbatim under `skills/<name>/vendor/`, with its license. Nothing to install.
+- `separate` — adapter only; the upstream skill cannot be redistributed (proprietary) or is not skill content (an MCP server), so it installs on its own.
 
 Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 42 skills out of the global skill listing budget.
 
@@ -20,7 +19,8 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 
 | Skill | One-liner | Disposition |
 |---|---|---|
-| `superpowers` | Full skill pack for planning + TDD | dependency |
+| `grill-me` | Relentless interview to sharpen a plan | vendored |
+| `superpowers` | Full skill pack for planning + TDD | vendored |
 | `context7` | Pulls live, version-exact docs | dependency |
 | `mcp-builder` | Wire Claude to any tool | bundled |
 | `skill-creator` | Scaffold your own skills | dependency |
@@ -35,6 +35,7 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 | `frontend-design` | Bold React + Tailwind UI | dependency |
 | `web-artifacts` | shadcn HTML artifacts | bundled |
 | `canvas-design` | Visual art to PNG / PDF | bundled |
+| `motion-ui` | Animation engines + animated UI | vendored |
 | `algorithmic-art` | Generative p5.js art | authored |
 | `ui-ux-pro-max` | Full design-system intel | local |
 | `slack-gif` | Slack-ready animated GIFs | bundled |
@@ -103,22 +104,30 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 
 ## Counts
 
-- 7 departments × 6 skills = **42 leaves**
+- **44 leaves** across 7 departments — Developers and Design carry 7, the rest 6
 - Model-invocable: **8** (`omniskill` router + 7 departments)
-- Authored: **31** · Adapters: **11** (4 dependency, 6 bundled, 1 local)
+- Authored: **31** · Vendored: **10** · Separate: **3** (`xlsx`, `docx`, `context7`)
 
-## Upstream targets for adapters
+## Upstream sources
 
-| Leaf | Delegates to | Install if missing |
+Vendored copies live at `skills/<leaf>/vendor/` and are **unmodified**. Send fixes upstream. Full attribution in [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md).
+
+| Leaf | Upstream | License |
 |---|---|---|
-| `superpowers` | `/superpowers` | `claude plugin install superpowers@claude-plugins-official` |
-| `context7` | `mcp__context7__*` tools | `claude plugin install context7@claude-plugins-official` |
-| `skill-creator` | `/skill-creator` | `claude plugin install skill-creator@claude-plugins-official` |
-| `frontend-design` | `/frontend-design` | `claude plugin install frontend-design@claude-plugins-official` |
-| `mcp-builder` | `/mcp-builder` | ships with Claude Code |
-| `web-artifacts` | `/web-artifacts-builder` | ships with Claude Code |
-| `canvas-design` | `/canvas-design` | ships with Claude Code |
-| `slack-gif` | `/slack-gif-creator` | ships with Claude Code |
-| `xlsx` | `/xlsx` | ships with Claude Code |
-| `docx` | `/docx` | ships with Claude Code |
-| `ui-ux-pro-max` | `/ui-ux-pro-max` | personal skill in `~/.claude/skills/` |
+| `superpowers` | [obra/superpowers](https://github.com/obra/superpowers) @ `896224c` (14 skills) | MIT |
+| `grill-me` | [mattpocock/skills](https://github.com/mattpocock/skills) (`grill-me` + `grilling`) | MIT |
+| `motion-ui` | [IPedrax/motion-ui](https://github.com/IPedrax/motion-ui) | MIT |
+| `ui-ux-pro-max` | bundled by the maintainer | see `vendor/` |
+| `canvas-design` | [anthropics/skills](https://github.com/anthropics/skills) + 54 OFL fonts | Apache-2.0 |
+| `web-artifacts` | [anthropics/skills](https://github.com/anthropics/skills) (`web-artifacts-builder`) | Apache-2.0 |
+| `slack-gif` | [anthropics/skills](https://github.com/anthropics/skills) (`slack-gif-creator`) | Apache-2.0 |
+| `mcp-builder` | [anthropics/skills](https://github.com/anthropics/skills) | Apache-2.0 |
+| `frontend-design` | [claude-plugins-public](https://github.com/anthropics/claude-plugins-public) | Apache-2.0 |
+| `skill-creator` | [claude-plugins-public](https://github.com/anthropics/claude-plugins-public) | Apache-2.0 |
+
+### Not vendored
+
+| Leaf | Reason | How to get it |
+|---|---|---|
+| `xlsx`, `docx` | Source-available and proprietary | Ship with Claude Code, else `claude plugin marketplace add anthropics/skills` |
+| `context7` | An MCP server, not skill content | `claude mcp add context7 --scope user -- npx -y @upstash/context7-mcp@latest` |

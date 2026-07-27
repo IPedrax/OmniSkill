@@ -1,12 +1,14 @@
 # Third-party notices
 
-OmniSkill itself is MIT (see [LICENSE](LICENSE)). Eight skills are **vendored verbatim** from upstream projects and remain under their own licenses. Each ships its license file alongside the code.
+OmniSkill itself is MIT (see [LICENSE](LICENSE)). Ten skills are **vendored verbatim** from upstream projects and remain under their own licenses. Each ships its license file alongside the code.
 
 ## Vendored
 
 | Skill | Upstream | License | Location |
 |---|---|---|---|
 | `superpowers` | [obra/superpowers](https://github.com/obra/superpowers) @ `896224c` — Jesse Vincent | MIT | `skills/superpowers/vendor/` |
+| `grill-me` | [mattpocock/skills](https://github.com/mattpocock/skills) — Matt Pocock (`grill-me` + `grilling`) | MIT | `skills/grill-me/vendor/` |
+| `motion-ui` | [IPedrax/motion-ui](https://github.com/IPedrax/motion-ui) | MIT | `skills/motion-ui/vendor/` |
 | `canvas-design` | [anthropics/skills](https://github.com/anthropics/skills) | Apache-2.0 | `skills/canvas-design/vendor/` |
 | `web-artifacts` | [anthropics/skills](https://github.com/anthropics/skills) (`web-artifacts-builder`) | Apache-2.0 | `skills/web-artifacts/vendor/` |
 | `slack-gif` | [anthropics/skills](https://github.com/anthropics/skills) (`slack-gif-creator`) | Apache-2.0 | `skills/slack-gif/vendor/` |

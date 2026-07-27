@@ -1,6 +1,6 @@
 ---
 name: design
-description: This skill should be used when the user needs the OmniSkill Design crew — building React/Tailwind UI, shadcn HTML artifacts, visual art exported to PNG or PDF, generative p5.js art, design-system and palette intelligence, or animated Slack GIFs. Triggers on "/omniskill:design", "design a landing page", "make this UI look better", "generative art", "color palette", "design system", "make a GIF".
+description: This skill should be used when the user needs the OmniSkill Design crew — building React/Tailwind UI, shadcn HTML artifacts, visual art exported to PNG or PDF, generative p5.js art, design-system and palette intelligence, UI animation with Framer Motion/GSAP/anime.js/Three.js, or animated Slack GIFs. Triggers on "/omniskill:design", "design a landing page", "make this UI look better", "add animations", "scroll animation", "color palette", "design system", "make a GIF".
 when_to_use: Use for visual and interface work — layout, typography, color, motion, and generated visual assets.
 allowed-tools: Read Glob
 ---
@@ -17,6 +17,7 @@ allowed-tools: Read Glob
 | `frontend-design` | Building the actual React + Tailwind interface |
 | `web-artifacts` | A self-contained shadcn/HTML artifact rather than a project |
 | `canvas-design` | Static visual art exported to PNG or PDF (posters, covers, diagrams) |
+| `motion-ui` | Animating an interface — scroll effects, transitions, 3D |
 | `algorithmic-art` | Generative, code-driven art with p5.js |
 | `slack-gif` | Short animated GIFs sized for Slack |
 
@@ -29,3 +30,5 @@ Read `${CLAUDE_SKILL_DIR}/../<skill>/SKILL.md` and follow it.
 Decide direction before writing markup. `ui-ux-pro-max` picks style, palette, and type; `frontend-design` implements it. Reversing that order produces the templated look this crew exists to avoid.
 
 Match the target to the artifact: a shareable one-pager is `web-artifacts`, a real app is `frontend-design`, a printed or posted image is `canvas-design`.
+
+`motion-ui` comes last. Animating a design that is still undecided amplifies the indecision — settle direction and structure first, then add motion.
