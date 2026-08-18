@@ -154,3 +154,6 @@ OmniSkill is [MIT](LICENSE).
 Ten bundled skills stay under their own licenses — MIT for [superpowers](https://github.com/obra/superpowers), [grill-me](https://github.com/mattpocock/skills), and [motion-ui](https://github.com/IPedrax/motion-ui); Apache-2.0 for the [anthropics/skills](https://github.com/anthropics/skills) and [claude-plugins-public](https://github.com/anthropics/claude-plugins-public) skills; SIL OFL for the 54 fonts in `canvas-design`. Every copy is unmodified and ships its license file. Full attribution: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 `xlsx` and `docx` are deliberately **not** bundled — they are source-available and proprietary, so redistribution here would not be permitted.
+---
+
+Built by [Pedro Medeiros](https://ipedrax.com.br). I build production LLM applications for companies too: multi-provider backends, the infrastructure under them, and the billing on top. Available for contract work, remote from Brazil on US hours. [pedro.medeiros@ipedrax.com.br](mailto:pedro.medeiros@ipedrax.com.br)
