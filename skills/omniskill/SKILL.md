@@ -1,13 +1,13 @@
 ---
 name: omniskill
-description: This skill should be used when the user starts a new project or asks for the OmniSkill workforce. Triggers on "build me a", "create a new app", "start a new project", "from scratch", "scaffold a", "new SaaS/site/landing page", "/omniskill", "what crews do I have", or any request that spans business functions (code, design, marketing, content, finance, ops, legal). Routes to 42 specialist skills across 7 departments.
+description: This skill should be used when the user starts a new project or asks for the OmniSkill workforce. Triggers on "build me a", "create a new app", "start a new project", "from scratch", "scaffold a", "new SaaS/site/landing page", "/omniskill", "what crews do I have", or any request that spans business functions (code, design, marketing, content, finance, ops, legal). Routes to 46 specialist skills across 7 departments.
 when_to_use: Use at the start of a new project to pick the right crew, or whenever a task belongs to a specialist department rather than general coding. Do not use for a small edit inside an existing codebase.
 allowed-tools: Read Glob
 ---
 
 # OmniSkill — your Claude workforce
 
-42 skills. 7 crews. One workspace.
+46 skills. 7 crews. One workspace.
 
 ## Step 0 — the approval gate (mandatory)
 
@@ -41,7 +41,7 @@ Read the department router's `SKILL.md` at `${CLAUDE_SKILL_DIR}/../<department>/
 
 To jump straight to a known specialist, read `${CLAUDE_SKILL_DIR}/../<skill-name>/SKILL.md` — for example `../dcf-model/SKILL.md`.
 
-**Read leaf skills rather than invoking them.** Leaves set `disable-model-invocation: true`, so they cannot be auto-invoked; that is what keeps 42 skills out of the global skill-listing budget. The user can still run any leaf directly as `/omniskill:dcf-model`.
+**Read leaf skills rather than invoking them.** Leaves set `disable-model-invocation: true`, so they cannot be auto-invoked; that is what keeps 46 skills out of the global skill-listing budget. The user can still run any leaf directly as `/omniskill:dcf-model`.
 
 ## Step 3 — work
 

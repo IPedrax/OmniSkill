@@ -1,18 +1,50 @@
 # 21st.dev — Sourcing & Fallback Recipes
 
-The skill sources professional components in **hybrid** mode:
+The skill sources professional components in **hybrid** mode, in this order:
 
 1. **Live (preferred):** if the 21st.dev **Magic MCP** is connected, use it to fetch/generate
    real components. Discover it with `ToolSearch` (query: `21st magic component ui`). Tool names
    typically look like `mcp__*magic*__*` (e.g. component builder / inspiration / logo search).
    If present, call it with the user's request and adapt the returned code to the project's
    stack, Tailwind config, and `motion/react` import path.
-2. **Fallback (always works):** if no Magic MCP is connected, build from the recipes below —
-   21st.dev-style: Tailwind + Radix primitives where useful + `motion/react` for animation.
+2. **Open registries:** for a React + Tailwind project, pull real maintained components through the
+   shadcn CLI from one of the registries below instead of hand-writing them.
+3. **Fallback (always works):** build from the recipes further down — 21st.dev-style: Tailwind +
+   Radix primitives where useful + `motion/react` for animation.
 
 > Detecting Magic MCP: run a `ToolSearch` for `magic 21st component`. If zero relevant tools
 > come back, announce "Magic MCP not detected — using built-in 21st-style patterns" and proceed
 > with the fallback. Never block on the MCP.
+
+---
+
+## Open component registries
+
+All three are React + Tailwind + Framer Motion, installed through the shadcn CLI as **copy-paste
+source into the project** (not a runtime dependency). Only offer them when the detector reports
+`framer-motion.usable: true`; on Vue, Svelte, or vanilla they are dead ends.
+
+| Registry | License | Install | Good for |
+| --- | --- | --- | --- |
+| [Cult UI](https://github.com/nolly-studio/cult-ui) | MIT (core) | `npx shadcn add @cult-ui/<name>` after registering `"@cult-ui": "https://cult-ui.com/r/{name}.json"` in `components.json` (shadcn CLI v3+) | Animated cards, texture/gradient surfaces, hero sections. The most established of the three. |
+| [Watermelon UI](https://ui.watermelon.sh) | MIT | `npx shadcn@latest add "https://registry.watermelon.sh/<name>.json"` | Breadth: 260+ components including dashboards, charts (Recharts), and full blocks. |
+| [Skiper UI](https://skiper-ui.com) | **Freemium** | `npx shadcn add @skiper-ui/<name>` | Showpieces: iOS-style dynamic island, cursor trails, unusual hover effects. |
+
+**Rules before pulling from any of them:**
+
+- **Check the stack first.** Watermelon targets Tailwind v4 and React 19; Cult UI assumes Next.js
+  conventions. Pasting a v4 component into a Tailwind v3 project produces silently broken styles.
+- **Skiper UI is not fully open source** despite how it is often described. Its free tier is real and
+  installable; the rest sits behind a one-time paid licence. Install only what the free tier serves,
+  and never reconstruct a paid component from screenshots or the marketing page.
+- **Adapt, do not paste.** Every one of these ships its own colors and radii. Rewrite them against
+  the project's `tailwind.config.*` tokens before committing, or the page ends up looking like three
+  different design systems.
+- **Re-check the animation import.** Registry components import from `framer-motion` or `motion/react`
+  depending on their age. Match whatever the detector reported for this project.
+
+For icon-to-icon transitions (menu becoming close, play becoming pause) do not pull a component at
+all: `morphicons` does it in ~7 KB. See `animation-libraries.md`.
 
 ---
 

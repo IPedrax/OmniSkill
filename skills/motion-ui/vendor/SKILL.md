@@ -1,15 +1,15 @@
 ---
 name: motion-ui
-description: "Install the right animation library into a compatible project and build professional, animated UI/UX. Supports four engines: Framer Motion (the `motion` package, React declarative motion), GSAP (timelines + ScrollTrigger, any framework), anime.js v4 (lightweight, any framework), and Three.js (3D/WebGL, `@react-three/fiber` in React). Detects stack + package manager and picks a usable engine before installing — GSAP/anime.js/Three.js work in React, Next, Vite, Vue, Svelte, Astro, or vanilla; Framer Motion is React-only. Sources components in hybrid mode: 21st.dev Magic MCP when connected, otherwise built-in recipes. Two control modes: confirm-each-step (default) and --auto (opt-in end-to-end). Actions: animate, add motion, add framer motion, add gsap, add anime.js, add three.js, scroll animation, 3D scene, WebGL, make it professional, polish UI, design landing page, build animated components, motion-ui. Triggers: 'add animations', 'install framer motion', 'install gsap', 'use anime.js', 'add three.js / a 3D scene', 'scroll-triggered animation', 'make this look professional', 'animate this', 'use 21st.dev', '--auto'."
+description: "Install the right animation library into a compatible project and build professional, animated UI/UX. Four engines: Framer Motion (the `motion` package, React declarative motion), GSAP (timelines + ScrollTrigger, any framework), anime.js v4 (lightweight, any framework), and Three.js (3D/WebGL, `@react-three/fiber` in React); plus Lenis for smooth scroll and morphicons for icon-to-icon transitions. Detects stack + package manager and picks a usable engine before installing — GSAP/anime.js/Three.js/Lenis/morphicons work in React, Next, Vite, Vue, Svelte, Astro, or vanilla; Framer Motion is React-only. Carries a timing/easing/choreography craft reference so the motion reads designed rather than bolted on. Sources components in hybrid mode: 21st.dev Magic MCP when connected, open shadcn registries (Cult UI, Watermelon UI, Skiper UI) next, built-in recipes otherwise. Two control modes: confirm-each-step (default) and --auto (opt-in end-to-end). Actions: animate, add motion, add framer motion, add gsap, add anime.js, add three.js, add lenis, smooth scroll, scroll animation, 3D scene, WebGL, icon morph, make it professional, polish UI, design landing page, build animated components, motion-ui. Triggers: 'add animations', 'install framer motion', 'install gsap', 'use anime.js', 'add three.js / a 3D scene', 'smooth scrolling', 'scroll-triggered animation', 'morph this icon', 'make this look professional', 'animate this', 'use 21st.dev', '--auto'."
 ---
 
 # motion-ui — Animated, Professional UI with Framer Motion · GSAP · anime.js · Three.js
 
 Turns a plain JS project into a polished, animated interface. It (1) verifies the project can host
 the right animation engine, (2) installs it, and (3) builds professional components, sourcing from
-**21st.dev** (Magic MCP when available, built-in patterns otherwise). Four engines are supported so
-the skill fits any stack and any job — 2D UI motion, scroll storytelling, or 3D. The user stays in
-control by default; a single `--auto` flag hands the whole job to the AI.
+**21st.dev** (Magic MCP when available, open shadcn registries or built-in patterns otherwise). Four
+engines are supported so the skill fits any stack and any job — 2D UI motion, scroll storytelling, or
+3D. The user stays in control by default; a single `--auto` flag hands the whole job to the AI.
 
 ## The four engines
 
@@ -20,8 +20,18 @@ control by default; a single `--auto` flag hands the whole job to the AI.
 | **anime.js** | `animejs` (v4) | Any JS project | Lightweight property/SVG animation, stagger, small bundle. |
 | **Three.js** | `three` (+ `@react-three/fiber`, `@react-three/drei`) | Any JS project | 3D / WebGL scenes, particles, shaders, product viewers. |
 
-They compose (GSAP driving a Three.js camera; Framer Motion wrapping an r3f `<Canvas>`). Full recipes:
-`references/motion-patterns.md` (Framer Motion) and `references/animation-libraries.md` (GSAP · anime.js · Three.js).
+### Two add-ons that are not engines
+
+| Add-on | Package | What it is |
+| --- | --- | --- |
+| **Lenis** | `lenis` | A smooth-scroll **layer** under whichever engine you picked. Install *with* one, never instead of. Marketing pages only; it takes over native scrolling. |
+| **morphicons** | `morphicons` | Icon-to-icon SVG morphing (menu→close, play→pause) in ~7 KB. Too small a job to justify an engine. |
+
+They compose (GSAP driving a Three.js camera; Framer Motion wrapping an r3f `<Canvas>`; Lenis under
+all of them). Full recipes: `references/motion-patterns.md` (Framer Motion) and
+`references/animation-libraries.md` (GSAP · anime.js · Three.js · Lenis · morphicons, plus the
+composition recipes). **How** it should move — duration bands, easing by intent, stagger, reduced-motion
+design — is `references/motion-craft.md`.
 
 ## When to use
 
@@ -52,8 +62,9 @@ node "<skills>/motion-ui/scripts/detect-stack.mjs" "<projectDir>"
 
 It reports: `compatible`, `framework` (next / remix / astro / vue / svelte / angular / vite / react /
 vanilla), `hasReact`, `hasTypeScript`, `hasTailwind`, `packageManager`, `warnings`, and a **`libraries`**
-map. Each entry (`framer-motion`, `gsap`, `anime`, `three`) has `usable`, `installed`, `install` (the
-exact command for this project's package manager, or `null` if already installed), `import`, and a `note`.
+map. Each entry (`framer-motion`, `gsap`, `anime`, `three`, `lenis`, `morphicons`) has `usable`,
+`installed`, `install` (the exact command for this project's package manager, or `null` if already
+installed), `import`, and a `note`.
 
 - If `compatible: false` → **stop**: there's no `package.json` (not a JS project). Don't install.
 - `framer-motion.usable` is `false` on non-React stacks — steer the user to GSAP or anime.js instead.
@@ -67,10 +78,21 @@ in `references/animation-libraries.md`):
 - Scroll-triggered, pinned, or timeline-heavy → **GSAP**.
 - Simple, lightweight property/SVG animation → **anime.js**.
 - 3D / WebGL → **Three.js**.
+- Inertial scroll feel asked for by name ("smooth scrolling", "buttery scroll") → add **Lenis** on top
+  of the engine above. It is never the whole answer, and it does not belong on dashboards or docs.
+- Only an icon needs to change shape → **morphicons**, and skip the engine entirely.
+
+**Check whether an engine is needed at all first.** A one-off fade or hover is CSS. A single reveal is
+`IntersectionObserver` plus a class. Installing a 40 KB timeline library for one transition is the
+mistake this step exists to prevent; say so and move on.
 
 Only `usable: true` engines are eligible. In Confirm mode, state your pick and why, and confirm before
 installing. Multiple engines can be installed if the design needs both (e.g. Framer Motion for UI +
 Three.js for a hero).
+
+Some art directions cannot be reached in real time at all. If the ask is a cinematic pre-rendered
+scroll journey, point at the external `scroll-world` skill and its cost gate rather than faking it in
+WebGL — see `references/animation-libraries.md`.
 
 ### Step 3 — Install the chosen engine
 Use that library's `install` string from the detector **verbatim** — it already includes the right
@@ -87,10 +109,15 @@ Verify the install succeeded (dependency appears in `package.json`) before proce
 1. Detect the **Magic MCP**: `ToolSearch` query `magic 21st component ui`. If relevant tools exist, use
    them to fetch/generate components, then adapt the result to the project's stack, Tailwind tokens, and
    the chosen engine's import path.
-2. If no Magic MCP: announce the fallback and build from the reference cookbooks —
-   `references/animation-libraries.md` (GSAP · anime.js · Three.js) or `references/21st-components.md`
-   + `references/motion-patterns.md` (Framer Motion).
-3. For palette / typography / overall style direction, compose with the **ui-ux-pro-max** and
+2. If no Magic MCP and the project is React + Tailwind, pull real components from an open shadcn
+   registry (Cult UI, Watermelon UI, Skiper UI) — see `references/21st-components.md` for the install
+   forms and the stack/licence traps. Skiper UI is freemium; install only its free tier.
+3. Otherwise announce the fallback and build from the reference cookbooks —
+   `references/animation-libraries.md` (GSAP · anime.js · Three.js · Lenis · morphicons) or
+   `references/21st-components.md` + `references/motion-patterns.md` (Framer Motion).
+4. Settle timing, easing, and stagger from `references/motion-craft.md` before writing values. Pick one
+   personality column and hold it across every component in the job.
+5. For palette / typography / overall style direction, compose with the **ui-ux-pro-max** and
    **ui-styling** skills rather than re-deriving them.
 
 ### Step 5 — Apply & verify
@@ -99,7 +126,9 @@ Verify the install succeeded (dependency appears in `package.json`) before proce
 - Always: honor `prefers-reduced-motion` (pause idle loops too — Three.js auto-spin, infinite tweens),
   animate transform/opacity for 2D, match existing tokens, keep components accessible (3D/decorative SVG
   needs a text/`aria` fallback). For Three.js, dispose GPU resources on teardown and cap pixel ratio.
+  With Lenis, exactly one thing may own the rAF loop (`autoRaf` **or** `gsap.ticker.add`, never both).
   Run the project's typecheck/lint if available; offer to start the dev server (or use the `/run` skill).
+- Before reporting done, run the eight-point checklist at the end of `references/motion-craft.md`.
 
 ## Hard rules
 - **Never skip Step 1.** No install without reading the detector's verdict.
@@ -107,11 +136,22 @@ Verify the install succeeded (dependency appears in `package.json`) before proce
 - **Auto mode is opt-in only** — require the `--auto` flag or an explicit "you decide everything."
 - **Match engine to stack** — only install an engine whose `usable: true`. Framer Motion never goes into
   a non-React project; offer GSAP/anime.js/Three.js there instead.
-- Respect reduced-motion in every component, in both modes.
+- **No engine for one transition.** If CSS or an `IntersectionObserver` covers the ask, say so instead
+  of installing.
+- **Lenis is never the answer on its own**, and never goes on a dashboard, a docs site, or anything
+  with long scrollable data. It hijacks native scrolling.
+- Respect reduced-motion in every component, in both modes. Design the reduced path, don't just
+  disable the animation.
 - Don't invent colors/fonts — read `tailwind.config.*` and global CSS first, or pull from sibling skills.
+- **Never reproduce paid component source.** Skiper UI's premium tier is licensed; use its free tier or
+  build the equivalent from the cookbooks.
 
 ## Files
 - `scripts/detect-stack.mjs` — stack + per-engine usability + package-manager detector (run first).
+- `references/motion-craft.md` — how it should move: duration bands, easing by intent, choreography,
+  personality, reduced-motion design, and the pre-ship checklist. Read before choosing values.
 - `references/motion-patterns.md` — Framer Motion recipe cookbook + accessibility + perf rules.
-- `references/animation-libraries.md` — GSAP · anime.js · Three.js recipe cookbook + which-engine matrix.
-- `references/21st-components.md` — Magic MCP sourcing flow + built-in 21st-style fallback components.
+- `references/animation-libraries.md` — GSAP · anime.js · Three.js · Lenis · morphicons cookbook,
+  which-engine matrix, composition recipes, and the pre-rendered-scroll escape hatch.
+- `references/21st-components.md` — Magic MCP sourcing flow, open shadcn registries, and built-in
+  21st-style fallback components.

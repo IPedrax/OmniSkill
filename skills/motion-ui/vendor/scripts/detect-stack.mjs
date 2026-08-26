@@ -9,6 +9,8 @@
  *   - gsap                      — any JS project (extra `@gsap/react` hook in React).
  *   - anime  (`animejs` v4)     — any JS project.
  *   - three                     — any JS project (extra r3f + drei in React).
+ *   - lenis                     — any JS project. Smooth-scroll layer, not an engine on its own.
+ *   - morphicons                — any JS project. Icon-to-icon SVG morphing (micro-engine).
  *
  * Usage: node detect-stack.mjs [projectDir]
  * Exit codes: 0 = report printed (check JSON `.compatible`), 1 = no/invalid package.json.
@@ -117,21 +119,41 @@ const three = {
   note: "3D / WebGL scenes, particles, shaders. Different category from 2D UI motion.",
 };
 
-const libraries = { "framer-motion": framer, gsap, anime, three };
+// lenis: framework-agnostic smooth-scroll layer. Pairs with an engine, never replaces one.
+const lenisInstalled = has("lenis");
+const lenis = {
+  usable: true,
+  installed: lenisInstalled,
+  install: lenisInstalled ? null : add("lenis"),
+  import: hasReact ? "lenis/react" : "lenis",
+  note: "Smooth-scroll layer, not a standalone engine — install alongside gsap/framer-motion, not instead of. Subpaths: lenis/react, lenis/vue, lenis/snap. Disables its own smoothing under prefers-reduced-motion.",
+};
+
+// morphicons: framework-agnostic icon-to-icon SVG morphing. Zero deps, ~7 KB gzip.
+const morphiconsInstalled = has("morphicons");
+const morphicons = {
+  usable: true,
+  installed: morphiconsInstalled,
+  install: morphiconsInstalled ? null : add("morphicons"),
+  import: hasReact ? "morphicons/react" : "morphicons/dom",
+  note: "Micro-engine for icon transitions only (menu→close, play→pause). Works with Lucide/Tabler/Heroicons/Iconoir paths. Pin the version — the project is young.",
+};
+
+const libraries = { "framer-motion": framer, gsap, anime, three, lenis, morphicons };
 
 // --- Compatibility verdict ----------------------------------------------
 // Any valid JS project can host gsap/anime/three, so it's always compatible.
 const compatible = true;
 const warnings = [];
 if (!hasReact) {
-  warnings.push(`No React detected (${framework}). Framer Motion is unavailable — gsap, anime, and three all work here.`);
+  warnings.push(`No React detected (${framework}). Framer Motion is unavailable — gsap, anime, three, lenis, and morphicons all work here.`);
 }
 if (framework === "astro" && !hasReact) {
   warnings.push("Astro without React: run gsap/anime/three inside a client-side script or island (client:load).");
 }
 const reason = hasReact
-  ? `Detected ${framework}${framework === "react" ? "" : " + React"}. All four libraries are available.`
-  : `Detected ${framework}. gsap, anime, and three are available; Framer Motion is React-only.`;
+  ? `Detected ${framework}${framework === "react" ? "" : " + React"}. Every library is available.`
+  : `Detected ${framework}. gsap, anime, three, lenis, and morphicons are available; Framer Motion is React-only.`;
 
 console.log(JSON.stringify({
   compatible,

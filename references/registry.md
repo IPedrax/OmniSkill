@@ -8,7 +8,7 @@ Canonical map of the workforce. `scripts/check-registry.mjs` validates the tree 
 - `vendored` — adapter + the real upstream skill bundled verbatim under `skills/<name>/vendor/`, with its license. Nothing to install.
 - `separate` — adapter only; the upstream skill cannot be redistributed (proprietary) or is not skill content (an MCP server), so it installs on its own.
 
-Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 42 skills out of the global skill listing budget.
+Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 46 skills out of the global skill listing budget.
 
 Every skill directory lives flat under `skills/`. Department routers are `dev`, `design`, `marketing`, `social-content`, `finance`, `ops`, `legal` — note the Social & Content router is `social-content` because the leaf skill `social` already owns that name.
 
@@ -32,10 +32,12 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 
 | Skill | One-liner | Disposition |
 |---|---|---|
+| `design-dna` | Reference UI → quantified design spec | vendored |
 | `frontend-design` | Bold React + Tailwind UI | dependency |
 | `web-artifacts` | shadcn HTML artifacts | bundled |
 | `canvas-design` | Visual art to PNG / PDF | bundled |
 | `motion-ui` | Animation engines + animated UI | vendored |
+| `uisfx` | Interface sound effects | authored |
 | `algorithmic-art` | Generative p5.js art | authored |
 | `ui-ux-pro-max` | Full design-system intel | local |
 | `slack-gif` | Slack-ready animated GIFs | bundled |
@@ -104,9 +106,9 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 
 ## Counts
 
-- **44 leaves** across 7 departments — Developers and Design carry 7, the rest 6
+- **46 leaves** across 7 departments — Design carries 9, Developers 7, the rest 6
 - Model-invocable: **8** (`omniskill` router + 7 departments)
-- Authored: **31** · Vendored: **10** · Separate: **3** (`xlsx`, `docx`, `context7`)
+- Authored: **32** · Vendored: **11** · Separate: **3** (`xlsx`, `docx`, `context7`)
 
 ## Upstream sources
 
@@ -117,6 +119,7 @@ Vendored copies live at `skills/<leaf>/vendor/` and are **unmodified**. Send fix
 | `superpowers` | [obra/superpowers](https://github.com/obra/superpowers) @ `896224c` (14 skills) | MIT |
 | `grill-me` | [mattpocock/skills](https://github.com/mattpocock/skills) (`grill-me` + `grilling`) | MIT |
 | `motion-ui` | [IPedrax/motion-ui](https://github.com/IPedrax/motion-ui) | MIT |
+| `design-dna` | [zanwei/design-dna](https://github.com/zanwei/design-dna) @ `9d9d795` | MIT |
 | `ui-ux-pro-max` | bundled by the maintainer | see `vendor/` |
 | `canvas-design` | [anthropics/skills](https://github.com/anthropics/skills) + 54 OFL fonts | Apache-2.0 |
 | `web-artifacts` | [anthropics/skills](https://github.com/anthropics/skills) (`web-artifacts-builder`) | Apache-2.0 |

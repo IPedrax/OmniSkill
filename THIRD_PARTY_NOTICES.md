@@ -1,6 +1,6 @@
 # Third-party notices
 
-OmniSkill itself is MIT (see [LICENSE](LICENSE)). Ten skills are **vendored verbatim** from upstream projects and remain under their own licenses. Each ships its license file alongside the code.
+OmniSkill itself is MIT (see [LICENSE](LICENSE)). Eleven skills are **vendored verbatim** from upstream projects and remain under their own licenses. Each ships its license file alongside the code.
 
 ## Vendored
 
@@ -9,6 +9,7 @@ OmniSkill itself is MIT (see [LICENSE](LICENSE)). Ten skills are **vendored verb
 | `superpowers` | [obra/superpowers](https://github.com/obra/superpowers) @ `896224c` — Jesse Vincent | MIT | `skills/superpowers/vendor/` |
 | `grill-me` | [mattpocock/skills](https://github.com/mattpocock/skills) — Matt Pocock (`grill-me` + `grilling`) | MIT | `skills/grill-me/vendor/` |
 | `motion-ui` | [IPedrax/motion-ui](https://github.com/IPedrax/motion-ui) | MIT | `skills/motion-ui/vendor/` |
+| `design-dna` | [zanwei/design-dna](https://github.com/zanwei/design-dna) @ `9d9d795` — zanwei.guo | MIT | `skills/design-dna/vendor/` |
 | `canvas-design` | [anthropics/skills](https://github.com/anthropics/skills) | Apache-2.0 | `skills/canvas-design/vendor/` |
 | `web-artifacts` | [anthropics/skills](https://github.com/anthropics/skills) (`web-artifacts-builder`) | Apache-2.0 | `skills/web-artifacts/vendor/` |
 | `slack-gif` | [anthropics/skills](https://github.com/anthropics/skills) (`slack-gif-creator`) | Apache-2.0 | `skills/slack-gif/vendor/` |
@@ -29,6 +30,11 @@ All vendored copies are **unmodified**. Send fixes upstream, not here. OmniSkill
 |---|---|
 | `xlsx`, `docx` | **Source-available and proprietary**, per [anthropics/skills](https://github.com/anthropics/skills). Redistribution inside an MIT plugin is not permitted, so these install separately. |
 | `context7` | An MCP server rather than skill content. Cannot be bundled; the adapter offers to set it up. |
+| `uisfx` | An npm **library**, not a skill. OmniSkill's `skills/uisfx/SKILL.md` is original work that teaches its use; [`uisfx`](https://github.com/romainsimon/uisfx) itself installs from npm (code MIT, the 936 generated sounds CC0 1.0). |
+
+### Named but not bundled
+
+`skills/motion-ui/` recommends third-party packages and component registries it does not ship: [Lenis](https://github.com/darkroomengineering/lenis) (MIT), [morphicons](https://github.com/guillermolg00/morphicons) (MIT), [Cult UI](https://github.com/nolly-studio/cult-ui) (MIT), [Watermelon UI](https://ui.watermelon.sh) (MIT), [Skiper UI](https://skiper-ui.com) (**freemium**, paid tier licensed), and the external [scroll-world](https://github.com/oso95/scroll-world) plugin (MIT, but bills real credits to paid render backends). Each installs from its own source under its own terms. The cookbooks flag the two that cost money or rights.
 
 ## Attribution
 
