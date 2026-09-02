@@ -31,6 +31,7 @@ All vendored copies are **unmodified**. Send fixes upstream, not here. OmniSkill
 | `xlsx`, `docx` | **Source-available and proprietary**, per [anthropics/skills](https://github.com/anthropics/skills). Redistribution inside an MIT plugin is not permitted, so these install separately. |
 | `context7` | An MCP server rather than skill content. Cannot be bundled; the adapter offers to set it up. |
 | `uisfx` | An npm **library**, not a skill. OmniSkill's `skills/uisfx/SKILL.md` is original work that teaches its use; [`uisfx`](https://github.com/romainsimon/uisfx) itself installs from npm (code MIT, the 936 generated sounds CC0 1.0). |
+| `airship` | A **CLI**, not skill content. OmniSkill's `skills/airship/SKILL.md` is original work that teaches its use; [Airship](https://github.com/0xnyn/airship) by Nayan Kumar (**MIT**) runs from npm as [`@airshiplabs/cli`](https://www.npmjs.com/package/@airshiplabs/cli). |
 
 ### Named but not bundled
 

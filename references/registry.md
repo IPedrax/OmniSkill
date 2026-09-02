@@ -6,9 +6,9 @@ Canonical map of the workforce. `scripts/check-registry.mjs` validates the tree 
 
 - `authored` — a full playbook written into this plugin.
 - `vendored` — adapter + the real upstream skill bundled verbatim under `skills/<name>/vendor/`, with its license. Nothing to install.
-- `separate` — adapter only; the upstream skill cannot be redistributed (proprietary) or is not skill content (an MCP server), so it installs on its own.
+- `separate` — adapter only; the upstream skill cannot be redistributed (proprietary) or is not skill content (an MCP server, a CLI), so it installs on its own.
 
-Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 46 skills out of the global skill listing budget.
+Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 47 skills out of the global skill listing budget.
 
 Every skill directory lives flat under `skills/`. Department routers are `dev`, `design`, `marketing`, `social-content`, `finance`, `ops`, `legal` — note the Social & Content router is `social-content` because the leaf skill `social` already owns that name.
 
@@ -36,6 +36,7 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 | `frontend-design` | Bold React + Tailwind UI | dependency |
 | `web-artifacts` | shadcn HTML artifacts | bundled |
 | `canvas-design` | Visual art to PNG / PDF | bundled |
+| `airship` | Visual editor over the running app | separate |
 | `motion-ui` | Animation engines + animated UI | vendored |
 | `uisfx` | Interface sound effects | authored |
 | `algorithmic-art` | Generative p5.js art | authored |
@@ -106,9 +107,9 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 
 ## Counts
 
-- **46 leaves** across 7 departments — Design carries 9, Developers 7, the rest 6
+- **47 leaves** across 7 departments — Design carries 10, Developers 7, the rest 6
 - Model-invocable: **8** (`omniskill` router + 7 departments)
-- Authored: **32** · Vendored: **11** · Separate: **3** (`xlsx`, `docx`, `context7`)
+- Authored: **32** · Vendored: **11** · Separate: **4** (`xlsx`, `docx`, `context7`, `airship`)
 
 ## Upstream sources
 
@@ -134,3 +135,4 @@ Vendored copies live at `skills/<leaf>/vendor/` and are **unmodified**. Send fix
 |---|---|---|
 | `xlsx`, `docx` | Source-available and proprietary | Ship with Claude Code, else `claude plugin marketplace add anthropics/skills` |
 | `context7` | An MCP server, not skill content | `claude mcp add context7 --scope user -- npx -y @upstash/context7-mcp@latest` |
+| `airship` | A CLI, not skill content | `npx @airshiplabs/cli --target <port>`, or `npm i -g @airshiplabs/cli` |
