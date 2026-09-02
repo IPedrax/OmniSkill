@@ -1,6 +1,6 @@
 # Third-party notices
 
-OmniSkill itself is MIT (see [LICENSE](LICENSE)). Eleven skills are **vendored verbatim** from upstream projects and remain under their own licenses. Each ships its license file alongside the code.
+OmniSkill itself is MIT (see [LICENSE](LICENSE)). Twelve skills are **vendored verbatim** from upstream projects and remain under their own licenses. Each ships its license file alongside the code.
 
 ## Vendored
 
@@ -10,6 +10,7 @@ OmniSkill itself is MIT (see [LICENSE](LICENSE)). Eleven skills are **vendored v
 | `grill-me` | [mattpocock/skills](https://github.com/mattpocock/skills) — Matt Pocock (`grill-me` + `grilling`) | MIT | `skills/grill-me/vendor/` |
 | `motion-ui` | [IPedrax/motion-ui](https://github.com/IPedrax/motion-ui) | MIT | `skills/motion-ui/vendor/` |
 | `design-dna` | [zanwei/design-dna](https://github.com/zanwei/design-dna) @ `9d9d795` — zanwei.guo | MIT | `skills/design-dna/vendor/` |
+| `slidev` | [slidevjs/slidev](https://github.com/slidevjs/slidev) @ `a8d8ff7` — Anthony Fu (`skills/slidev`, 53 references) | MIT | `skills/slidev/vendor/` |
 | `canvas-design` | [anthropics/skills](https://github.com/anthropics/skills) | Apache-2.0 | `skills/canvas-design/vendor/` |
 | `web-artifacts` | [anthropics/skills](https://github.com/anthropics/skills) (`web-artifacts-builder`) | Apache-2.0 | `skills/web-artifacts/vendor/` |
 | `slack-gif` | [anthropics/skills](https://github.com/anthropics/skills) (`slack-gif-creator`) | Apache-2.0 | `skills/slack-gif/vendor/` |
@@ -32,6 +33,7 @@ All vendored copies are **unmodified**. Send fixes upstream, not here. OmniSkill
 | `context7` | An MCP server rather than skill content. Cannot be bundled; the adapter offers to set it up. |
 | `uisfx` | An npm **library**, not a skill. OmniSkill's `skills/uisfx/SKILL.md` is original work that teaches its use; [`uisfx`](https://github.com/romainsimon/uisfx) itself installs from npm (code MIT, the 936 generated sounds CC0 1.0). |
 | `airship` | A **CLI**, not skill content. OmniSkill's `skills/airship/SKILL.md` is original work that teaches its use; [Airship](https://github.com/0xnyn/airship) by Nayan Kumar (**MIT**) runs from npm as [`@airshiplabs/cli`](https://www.npmjs.com/package/@airshiplabs/cli). |
+| `vgpu` | An npm **library**, not skill content. OmniSkill's `skills/vgpu/SKILL.md` is original work that teaches its use; [vgpu](https://github.com/vercel-labs/vgpu) by Vercel Labs (**MIT**) installs from npm, and its own docs ship inside the package. |
 
 ### Named but not bundled
 

@@ -8,7 +8,7 @@ Canonical map of the workforce. `scripts/check-registry.mjs` validates the tree 
 - `vendored` — adapter + the real upstream skill bundled verbatim under `skills/<name>/vendor/`, with its license. Nothing to install.
 - `separate` — adapter only; the upstream skill cannot be redistributed (proprietary) or is not skill content (an MCP server, a CLI), so it installs on its own.
 
-Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 47 skills out of the global skill listing budget.
+Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 49 skills out of the global skill listing budget.
 
 Every skill directory lives flat under `skills/`. Department routers are `dev`, `design`, `marketing`, `social-content`, `finance`, `ops`, `legal` — note the Social & Content router is `social-content` because the leaf skill `social` already owns that name.
 
@@ -36,10 +36,12 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 | `frontend-design` | Bold React + Tailwind UI | dependency |
 | `web-artifacts` | shadcn HTML artifacts | bundled |
 | `canvas-design` | Visual art to PNG / PDF | bundled |
+| `slidev` | Markdown decks with live code | vendored |
 | `airship` | Visual editor over the running app | separate |
 | `motion-ui` | Animation engines + animated UI | vendored |
 | `uisfx` | Interface sound effects | authored |
 | `algorithmic-art` | Generative p5.js art | authored |
+| `vgpu` | WebGPU shaders, effects, compute | separate |
 | `ui-ux-pro-max` | Full design-system intel | local |
 | `slack-gif` | Slack-ready animated GIFs | bundled |
 
@@ -107,9 +109,9 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 
 ## Counts
 
-- **47 leaves** across 7 departments — Design carries 10, Developers 7, the rest 6
+- **49 leaves** across 7 departments — Design carries 12, Developers 7, the rest 6
 - Model-invocable: **8** (`omniskill` router + 7 departments)
-- Authored: **32** · Vendored: **11** · Separate: **4** (`xlsx`, `docx`, `context7`, `airship`)
+- Authored: **32** · Vendored: **12** · Separate: **5** (`xlsx`, `docx`, `context7`, `airship`, `vgpu`)
 
 ## Upstream sources
 
@@ -121,6 +123,7 @@ Vendored copies live at `skills/<leaf>/vendor/` and are **unmodified**. Send fix
 | `grill-me` | [mattpocock/skills](https://github.com/mattpocock/skills) (`grill-me` + `grilling`) | MIT |
 | `motion-ui` | [IPedrax/motion-ui](https://github.com/IPedrax/motion-ui) | MIT |
 | `design-dna` | [zanwei/design-dna](https://github.com/zanwei/design-dna) @ `9d9d795` | MIT |
+| `slidev` | [slidevjs/slidev](https://github.com/slidevjs/slidev) @ `a8d8ff7` (`skills/slidev`, 53 references) | MIT |
 | `ui-ux-pro-max` | bundled by the maintainer | see `vendor/` |
 | `canvas-design` | [anthropics/skills](https://github.com/anthropics/skills) + 54 OFL fonts | Apache-2.0 |
 | `web-artifacts` | [anthropics/skills](https://github.com/anthropics/skills) (`web-artifacts-builder`) | Apache-2.0 |
@@ -136,3 +139,4 @@ Vendored copies live at `skills/<leaf>/vendor/` and are **unmodified**. Send fix
 | `xlsx`, `docx` | Source-available and proprietary | Ship with Claude Code, else `claude plugin marketplace add anthropics/skills` |
 | `context7` | An MCP server, not skill content | `claude mcp add context7 --scope user -- npx -y @upstash/context7-mcp@latest` |
 | `airship` | A CLI, not skill content | `npx @airshiplabs/cli --target <port>`, or `npm i -g @airshiplabs/cli` |
+| `vgpu` | An npm library, not skill content | `pnpm add vgpu` · docs offline via `npx vgpu docs` |
