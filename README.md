@@ -1,10 +1,10 @@
 <div align="center">
   <img src="assets/icons/users.svg" width="56" alt="" />
   <h1>OmniSkill</h1>
-  <p><strong>Your Claude workforce — 51 specialist skills across 7 departments, behind one router. Ship code, design interfaces, rank in search, model the numbers, run ops, read the contract.</strong></p>
+  <p><strong>Your Claude workforce — 52 specialist skills across 7 departments, behind one router. Ship code, design interfaces, rank in search, model the numbers, run ops, read the contract.</strong></p>
 </div>
 
-Most skill collections do one of two things badly: they cover a single domain and leave you switching tools for everything else, or they dump a hundred skills into your session and quietly wreck the context budget every other skill depends on. **OmniSkill** does neither. It gives you a **real specialist for each of the seven functions a small company actually runs on**, routed from a single entry point — and it costs your skill listing **8 entries, not 51**. Invoke it yourself with `/omniskill`, or let it offer itself when you start a new project. It never activates without your say-so.
+Most skill collections do one of two things badly: they cover a single domain and leave you switching tools for everything else, or they dump a hundred skills into your session and quietly wreck the context budget every other skill depends on. **OmniSkill** does neither. It gives you a **real specialist for each of the seven functions a small company actually runs on**, routed from a single entry point — and it costs your skill listing **8 entries, not 52**. Invoke it yourself with `/omniskill`, or let it offer itself when you start a new project. It never activates without your say-so.
 
 Built for **Claude Code** (Windows / macOS / Linux).
 
@@ -16,7 +16,7 @@ Built for **Claude Code** (Windows / macOS / Linux).
 |---|---|---|---|
 | 01 | **Developers** | Ship code faster, from scaffold to QA | `grill-me` · `superpowers` · `context7` · `mcp-builder` · `skill-creator` · `webapp-testing` · `claude-mem` |
 | 02 | **Design** | UI that never looks templated | `anydesign` · `ui-ux-pro-max` · `frontend-design` · `web-artifacts` · `airship` · `motion-ui` · `uisfx` · `canvas-design` · `logo-design` · `slidev` · `algorithmic-art` · `vgpu` · `img2threejs` · `slack-gif` |
-| 03 | **Marketing** | Copy, SEO and ads that convert | `seo-audit` · `programmatic-seo` · `ai-seo` · `cro` · `ad-creative` · `mktg-psychology` |
+| 03 | **Marketing** | Copy, SEO and ads that convert | `local-leads` · `seo-audit` · `programmatic-seo` · `ai-seo` · `cro` · `ad-creative` · `mktg-psychology` |
 | 04 | **Social & Content** | Feed the algorithm on autopilot | `social` · `copywriting` · `content-strategy` · `video` · `pillar-content` · `email-sequences` |
 | 05 | **Finance** | Model the numbers before you spend | `dcf-model` · `3-statements` · `lbo-model` · `comps-analysis` · `pricing` · `pitch-deck` |
 | 06 | **Operations** | Run the business like a machine | `sop-builder` · `incident-postmortem` · `business-case` · `launch-runbook` · `internal-comms` · `xlsx` |
@@ -29,7 +29,7 @@ Full map with one-liners: [`references/registry.md`](references/registry.md).
 ## <img src="assets/icons/sparkles.svg" width="20" align="absmiddle" alt="" /> What it does
 
 - **Seven departments, one door** — `/omniskill` reads the job, recommends a crew, and loads only that specialist. Real projects cross crews, so it sequences them (Finance → Design → Marketing → Legal → Ops) and loads each only when it gets there.
-- **Costs 8 skill-listing entries, not 51** — the routers carry descriptions; all 51 leaves are `disable-model-invocation: true`. They cost **zero** listing budget and stay fully invocable by name. On a machine already running several plugins, this is the difference between adding a workforce and degrading every skill you own.
+- **Costs 8 skill-listing entries, not 52** — the routers carry descriptions; all 52 leaves are `disable-model-invocation: true`. They cost **zero** listing budget and stay fully invocable by name. On a machine already running several plugins, this is the difference between adding a workforce and degrading every skill you own.
 - **Playbooks, not prompt-shapers** — 32 skills are full working methods. DCF enforces *unlevered means unlevered* and sanity-bands the terminal value. LBO attributes IRR across deleveraging, EBITDA growth, and multiple expansion. Contract review ranks findings by severity against deal size. These are methods you'd actually follow.
 - **Nothing mature gets re-implemented** — 32 skills are written here; the other 17 wrap real upstream work. Twelve of those ride along in the box, vendored **unmodified** with their licenses intact, so a fresh machine gets the whole workforce from one install and fixes still go upstream.
 - **Offers itself, never assumes** — a hook notices new-project intent and *suggests*. Claude then asks. Every activation goes through a question you answer.
@@ -57,7 +57,7 @@ claude plugin marketplace add ./OmniSkill && claude plugin install omniskill@omn
 
 That single install is the whole workforce. **Twelve upstream skills ship inside it** — `superpowers` (all 14), `grill-me`, `motion-ui`, `anydesign`, `slidev` (with all 53 of its references), `ui-ux-pro-max`, `canvas-design` (with its 54 OFL fonts), `web-artifacts`, `slack-gif`, `mcp-builder`, `frontend-design`, and `skill-creator`. Nothing to chase down.
 
-### <img src="assets/icons/layers.svg" width="17" align="absmiddle" alt="" /> The seven exceptions
+### <img src="assets/icons/layers.svg" width="17" align="absmiddle" alt="" /> The eight exceptions
 
 | Skill | Why | What to do |
 |---|---|---|
@@ -65,6 +65,7 @@ That single install is the whole workforce. **Twelve upstream skills ship inside
 | `context7` | An MCP server, not skill content | The adapter offers to set it up when you first need it |
 | `airship` | A CLI, not skill content | `npx @airshiplabs/cli --target <port>` — nothing to install into your project |
 | `vgpu` | An npm library, not skill content | `pnpm add vgpu` when a project needs it; its docs answer offline via `npx vgpu docs` |
+| `local-leads` | A Go binary, not skill content | Release binary from [gosom/google-maps-scraper](https://github.com/gosom/google-maps-scraper), run through a wrapper with `DISABLE_TELEMETRY=1` |
 | `logo-design` | Bundles 1,432 real trademarks that its MIT license does not cover | `git clone https://github.com/kaankiziltug/logo-design-skill.git ~/tools/logo-design-skill`; stdlib only |
 | `img2threejs` | A Python toolkit with its own router, shipped often | `git clone https://github.com/img2threejs/img2threejs.git ~/tools/img2threejs`; stdlib only, nothing to pip install |
 
@@ -95,7 +96,7 @@ Or go straight to what you want:
 /omniskill:dcf-model       jump to a specialist
 ```
 
-All 51 leaves are directly invocable by name.
+All 52 leaves are directly invocable by name.
 
 ---
 
@@ -117,7 +118,7 @@ To turn it off entirely, set `OMNISKILL_AUTO_SUGGEST=false` in your environment,
 
 Claude Code loads every skill's description into context, capped at roughly **1% of the context window**. On a machine with several plugins installed that budget is already tight, and when it overflows Claude Code starts dropping descriptions — from *every* skill you have, not just the new ones.
 
-So OmniSkill spends 8 entries and no more. The routers carry descriptions; all 51 leaves set `disable-model-invocation: true`, which costs zero listing budget while leaving them fully invocable by name. Routing reaches them by reading their `SKILL.md` directly.
+So OmniSkill spends 8 entries and no more. The routers carry descriptions; all 52 leaves set `disable-model-invocation: true`, which costs zero listing budget while leaving them fully invocable by name. Routing reaches them by reading their `SKILL.md` directly.
 
 **The trade:** Claude won't spontaneously reach for `dcf-model` — it gets there through `/omniskill` or a department router. Want a specific leaf auto-triggering? Delete one line from its frontmatter.
 
@@ -129,7 +130,7 @@ So OmniSkill spends 8 entries and no more. The routers carry descriptions; all 5
 node scripts/check-registry.mjs
 ```
 
-Checks the tree against the registry, confirms all 51 leaves exist, and asserts **exactly 8 skills are model-invocable** — the context-budget guarantee. It fails loudly if the architecture ever regresses.
+Checks the tree against the registry, confirms all 52 leaves exist, and asserts **exactly 8 skills are model-invocable** — the context-budget guarantee. It fails loudly if the architecture ever regresses.
 
 ```bash
 node hooks/detect-new-project.mjs --selftest

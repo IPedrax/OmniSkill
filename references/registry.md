@@ -8,7 +8,7 @@ Canonical map of the workforce. `scripts/check-registry.mjs` validates the tree 
 - `vendored` — adapter + the real upstream skill bundled verbatim under `skills/<name>/vendor/`, with its license. Nothing to install.
 - `separate` — adapter only; the upstream skill cannot be redistributed (proprietary) or is not skill content (an MCP server, a CLI), so it installs on its own.
 
-Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 51 skills out of the global skill listing budget.
+Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 52 skills out of the global skill listing budget.
 
 Every skill directory lives flat under `skills/`. Department routers are `dev`, `design`, `marketing`, `social-content`, `finance`, `ops`, `legal` — note the Social & Content router is `social-content` because the leaf skill `social` already owns that name.
 
@@ -52,6 +52,7 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 
 | Skill | One-liner | Disposition |
 |---|---|---|
+| `local-leads` | Local business prospect lists from Google Maps | separate |
 | `seo-audit` | Diagnoses on-page SEO | authored |
 | `programmatic-seo` | Pages at scale from data | authored |
 | `ai-seo` | Rank inside AI answers | authored |
@@ -111,9 +112,9 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 
 ## Counts
 
-- **51 leaves** across 7 departments — Design carries 14, Developers 7, the rest 6
+- **52 leaves** across 7 departments — Design carries 14, Developers 7, Marketing 7, the rest 6
 - Model-invocable: **8** (`omniskill` router + 7 departments)
-- Authored: **32** · Vendored: **12** · Separate: **7** (`xlsx`, `docx`, `context7`, `airship`, `vgpu`, `img2threejs`, `logo-design`)
+- Authored: **32** · Vendored: **12** · Separate: **8** (`xlsx`, `docx`, `context7`, `airship`, `vgpu`, `img2threejs`, `logo-design`, `local-leads`)
 
 ## Upstream sources
 
@@ -142,5 +143,6 @@ Vendored copies live at `skills/<leaf>/vendor/` and are **unmodified**. Send fix
 | `context7` | An MCP server, not skill content | `claude mcp add context7 --scope user -- npx -y @upstash/context7-mcp@latest` |
 | `airship` | A CLI, not skill content | `npx @airshiplabs/cli --target <port>`, or `npm i -g @airshiplabs/cli` |
 | `vgpu` | An npm library, not skill content | `pnpm add vgpu` · docs offline via `npx vgpu docs` |
+| `local-leads` | A Go binary, not skill content | Release binary into `~/tools/google-maps-scraper`, called through a wrapper that sets `DISABLE_TELEMETRY=1` |
 | `logo-design` | Bundles 1,432 trademarks its MIT license does not cover | `git clone https://github.com/kaankiziltug/logo-design-skill.git ~/tools/logo-design-skill` |
 | `img2threejs` | A Python toolkit with its own router, shipped often | `git clone https://github.com/img2threejs/img2threejs.git ~/tools/img2threejs` |
