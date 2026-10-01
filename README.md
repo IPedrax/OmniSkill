@@ -15,7 +15,7 @@ Built for **Claude Code** (Windows / macOS / Linux).
 | # | Department | Covers | Skills |
 |---|---|---|---|
 | 01 | **Developers** | Ship code faster, from scaffold to QA | `grill-me` · `superpowers` · `context7` · `mcp-builder` · `skill-creator` · `webapp-testing` · `claude-mem` |
-| 02 | **Design** | UI that never looks templated | `design-dna` · `ui-ux-pro-max` · `frontend-design` · `web-artifacts` · `airship` · `motion-ui` · `uisfx` · `canvas-design` · `slidev` · `algorithmic-art` · `vgpu` · `img2threejs` · `slack-gif` |
+| 02 | **Design** | UI that never looks templated | `anydesign` · `ui-ux-pro-max` · `frontend-design` · `web-artifacts` · `airship` · `motion-ui` · `uisfx` · `canvas-design` · `slidev` · `algorithmic-art` · `vgpu` · `img2threejs` · `slack-gif` |
 | 03 | **Marketing** | Copy, SEO and ads that convert | `seo-audit` · `programmatic-seo` · `ai-seo` · `cro` · `ad-creative` · `mktg-psychology` |
 | 04 | **Social & Content** | Feed the algorithm on autopilot | `social` · `copywriting` · `content-strategy` · `video` · `pillar-content` · `email-sequences` |
 | 05 | **Finance** | Model the numbers before you spend | `dcf-model` · `3-statements` · `lbo-model` · `comps-analysis` · `pricing` · `pitch-deck` |
@@ -55,7 +55,7 @@ claude plugin install omniskill@omniskill
 claude plugin marketplace add ./OmniSkill && claude plugin install omniskill@omniskill
 ```
 
-That single install is the whole workforce. **Twelve upstream skills ship inside it** — `superpowers` (all 14), `grill-me`, `motion-ui`, `design-dna`, `slidev` (with all 53 of its references), `ui-ux-pro-max`, `canvas-design` (with its 54 OFL fonts), `web-artifacts`, `slack-gif`, `mcp-builder`, `frontend-design`, and `skill-creator`. Nothing to chase down.
+That single install is the whole workforce. **Twelve upstream skills ship inside it** — `superpowers` (all 14), `grill-me`, `motion-ui`, `anydesign`, `slidev` (with all 53 of its references), `ui-ux-pro-max`, `canvas-design` (with its 54 OFL fonts), `web-artifacts`, `slack-gif`, `mcp-builder`, `frontend-design`, and `skill-creator`. Nothing to chase down.
 
 ### <img src="assets/icons/layers.svg" width="17" align="absmiddle" alt="" /> The six exceptions
 
@@ -154,7 +154,7 @@ The **Marketing** crew will not build dark patterns. Fake countdowns, confirmsha
 
 OmniSkill is [MIT](LICENSE).
 
-Twelve bundled skills stay under their own licenses — MIT for [superpowers](https://github.com/obra/superpowers), [grill-me](https://github.com/mattpocock/skills), [motion-ui](https://github.com/IPedrax/motion-ui), [design-dna](https://github.com/zanwei/design-dna), and [slidev](https://github.com/slidevjs/slidev); Apache-2.0 for the [anthropics/skills](https://github.com/anthropics/skills) and [claude-plugins-public](https://github.com/anthropics/claude-plugins-public) skills; SIL OFL for the 54 fonts in `canvas-design`. Every copy is unmodified and ships its license file. Full attribution: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Twelve bundled skills stay under their own licenses — MIT for [superpowers](https://github.com/obra/superpowers), [grill-me](https://github.com/mattpocock/skills), [motion-ui](https://github.com/IPedrax/motion-ui), [anydesign](https://github.com/uxKero/anydesign), and [slidev](https://github.com/slidevjs/slidev); Apache-2.0 for the [anthropics/skills](https://github.com/anthropics/skills) and [claude-plugins-public](https://github.com/anthropics/claude-plugins-public) skills; SIL OFL for the 54 fonts in `canvas-design`. Every copy is unmodified and ships its license file. Full attribution: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 `xlsx` and `docx` are deliberately **not** bundled — they are source-available and proprietary, so redistribution here would not be permitted.
 

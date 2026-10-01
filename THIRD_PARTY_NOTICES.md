@@ -9,7 +9,7 @@ OmniSkill itself is MIT (see [LICENSE](LICENSE)). Twelve skills are **vendored v
 | `superpowers` | [obra/superpowers](https://github.com/obra/superpowers) @ `896224c` — Jesse Vincent | MIT | `skills/superpowers/vendor/` |
 | `grill-me` | [mattpocock/skills](https://github.com/mattpocock/skills) — Matt Pocock (`grill-me` + `grilling`) | MIT | `skills/grill-me/vendor/` |
 | `motion-ui` | [IPedrax/motion-ui](https://github.com/IPedrax/motion-ui) | MIT | `skills/motion-ui/vendor/` |
-| `design-dna` | [zanwei/design-dna](https://github.com/zanwei/design-dna) @ `9d9d795` — zanwei.guo | MIT | `skills/design-dna/vendor/` |
+| `anydesign` | [uxKero/anydesign](https://github.com/uxKero/anydesign) @ `d81bd89` — Alan Ponce (v0.6.0, `examples/` omitted) | MIT | `skills/anydesign/vendor/` |
 | `slidev` | [slidevjs/slidev](https://github.com/slidevjs/slidev) @ `a8d8ff7` — Anthony Fu (`skills/slidev`, 53 references) | MIT | `skills/slidev/vendor/` |
 | `canvas-design` | [anthropics/skills](https://github.com/anthropics/skills) | Apache-2.0 | `skills/canvas-design/vendor/` |
 | `web-artifacts` | [anthropics/skills](https://github.com/anthropics/skills) (`web-artifacts-builder`) | Apache-2.0 | `skills/web-artifacts/vendor/` |

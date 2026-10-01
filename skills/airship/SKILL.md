@@ -72,11 +72,11 @@ The check catches known-dangerous commands. It does not understand shell, so it 
 
 **A blank frame means framing headers.** Airship strips `X-Frame-Options` and `frame-ancestors` from the surfaces it serves, so this only happens under `--keep-csp`. Drop the flag rather than loosening the app's real policy.
 
-**It works with the styling system already in the project.** Tailwind, CSS Modules, styled-components — the change lands in the source file, so it should land in the same tokens and conventions the codebase already uses. If the project has a design spec from `design-dna` or `ui-ux-pro-max`, that spec still governs; the canvas is a faster way to hit it, not permission to freehand.
+**It works with the styling system already in the project.** Tailwind, CSS Modules, styled-components — the change lands in the source file, so it should land in the same tokens and conventions the codebase already uses. If the project has a design spec from `anydesign` or `ui-ux-pro-max`, that spec still governs; the canvas is a faster way to hit it, not permission to freehand.
 
 ## Where it sits in the crew
 
-After `frontend-design`, and alongside `motion-ui`. Direction from `design-dna` or `ui-ux-pro-max`, the interface from `frontend-design`, then airship for the iteration pass on the running thing — where a spacing scale that read fine in a spec turns out to be wrong at mobile width.
+After `frontend-design`, and alongside `motion-ui`. Direction from `anydesign` or `ui-ux-pro-max`, the interface from `frontend-design`, then airship for the iteration pass on the running thing — where a spacing scale that read fine in a spec turns out to be wrong at mobile width.
 
 It is not a substitute for deciding direction. An infinite canvas over an undecided design produces a hundred fast, uncommitted adjustments, which is the templated look this crew exists to avoid, arrived at more quickly. Settle the spec first, then point at it.
 

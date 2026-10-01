@@ -1,6 +1,6 @@
 ---
 name: design
-description: This skill should be used when the user needs the OmniSkill Design crew — extracting a design direction from a reference screenshot or URL, building React/Tailwind UI, shadcn HTML artifacts, visual art exported to PNG or PDF, developer slide decks, generative p5.js art, WebGPU shaders and effects, image-to-Three.js model reconstruction, design-system and palette intelligence, editing the running app visually, UI animation with Framer Motion/GSAP/anime.js/Three.js/Lenis, interface sound effects, or animated Slack GIFs. Triggers on "/omniskill:design", "design a landing page", "make this UI look better", "make it look like this site", "extract the design from this screenshot", "edit my app visually", "point and click at my UI", "visual editor", "slide deck", "conference talk", "presentation with code", "shader", "WebGPU", "turn this image into a 3D model", "rebuild this in Three.js", "add animations", "scroll animation", "smooth scrolling", "add sound effects", "color palette", "design system", "make a GIF".
+description: This skill should be used when the user needs the OmniSkill Design crew — extracting a design system or one element from a screenshot, URL or Figma file, building React/Tailwind UI, shadcn HTML artifacts, visual art exported to PNG or PDF, developer slide decks, generative p5.js art, WebGPU shaders and effects, image-to-Three.js model reconstruction, design-system and palette intelligence, editing the running app visually, UI animation with Framer Motion/GSAP/anime.js/Three.js/Lenis, interface sound effects, or animated Slack GIFs. Triggers on "/omniskill:design", "design a landing page", "make this UI look better", "make it look like this site", "extract the design from this screenshot", "copy this navbar", "edit my app visually", "point and click at my UI", "visual editor", "slide deck", "conference talk", "presentation with code", "shader", "WebGPU", "image to 3D model", "add animations", "scroll animation", "smooth scrolling", "add sound effects", "color palette", "design system", "make a GIF".
 when_to_use: Use for visual and interface work — layout, typography, color, motion, and generated visual assets.
 allowed-tools: Read Glob
 ---
@@ -13,7 +13,7 @@ allowed-tools: Read Glob
 
 | Skill | Use when |
 |---|---|
-| `design-dna` | The user can point at a reference — screenshot, URL, competitor. Extracts it into a spec. |
+| `anydesign` | The user can point at a reference: screenshot, URL, Figma, competitor. Measures it into design.md + tokens, or copies one element. |
 | `ui-ux-pro-max` | Choosing the direction from scratch: style, palette, font pairing, layout system. **Start here** when there is no reference. |
 | `frontend-design` | Building the actual React + Tailwind interface |
 | `web-artifacts` | A self-contained shadcn/HTML artifact rather than a project |
@@ -33,7 +33,7 @@ Read `${CLAUDE_SKILL_DIR}/../<skill>/SKILL.md` and follow it.
 
 ## Routing notes
 
-Decide direction before writing markup. Two doors lead in: `design-dna` when the user can point at something they want it to look like, `ui-ux-pro-max` when they cannot and need the direction chosen. Running both is normal — extract the DNA, then argue with it. `frontend-design` implements whatever comes out. Reversing that order produces the templated look this crew exists to avoid.
+Decide direction before writing markup. Two doors lead in: `anydesign` when the user can point at something they want it to look like, `ui-ux-pro-max` when they cannot and need the direction chosen. Running both is normal — extract the spec, then argue with it. `frontend-design` implements whatever comes out. Reversing that order produces the templated look this crew exists to avoid.
 
 Match the target to the artifact: a shareable one-pager is `web-artifacts`, a real app is `frontend-design`, a printed or posted image is `canvas-design`, a talk is `slidev`. Reach for `slidev` when the deck contains code, diagrams or math — that is what it is for. A pitch with none of that is Finance's `pitch-deck` for the narrative and `canvas-design` for the image; a Vite project is the wrong shape for a board update.
 

@@ -34,7 +34,7 @@ Pick by the job, not by habit — Framer Motion for React component motion, GSAP
 
 **Craft before code.** `motion-craft.md` settles duration bands, easing by intent, stagger limits, and the reduced-motion design. Pick one personality column and hold it across the whole job. Values chosen per-component are what "templated" actually looks like.
 
-**Direction first.** Extract a reference with `/omniskill:design-dna` or choose one with `/omniskill:ui-ux-pro-max`, build the interface with `/omniskill:frontend-design`, then animate here. Motion applied to an undecided design amplifies the indecision.
+**Direction first.** Extract a reference with `/omniskill:anydesign` or choose one with `/omniskill:ui-ux-pro-max`, build the interface with `/omniskill:frontend-design`, then animate here. Motion applied to an undecided design amplifies the indecision.
 
 **Confirm mode is the default and should stay that way.** `--auto` hands the whole job over end to end; it is opt-in precisely so that never happens by accident.
 

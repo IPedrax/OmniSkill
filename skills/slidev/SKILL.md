@@ -30,7 +30,7 @@ For a deck with none of that — a client pitch, a board update, an all-hands �
 
 **Live code is a promise made to a room.** `monaco-run` executes in the browser during the talk, so anything it touches — network, timing, a package that assumes Node — is a failure with an audience watching. Keep runnable samples pure and fast, and put anything else in a plain highlighted block.
 
-**The deck is a web app, so treat it like one.** It has a dev server, dependencies and a build. When it needs to look designed rather than default, that is the rest of this crew's job: `design-dna` to extract a direction from a reference deck, `ui-ux-pro-max` to choose type and palette, and the theme's own CSS to apply it. Slidev renders; it does not art-direct.
+**The deck is a web app, so treat it like one.** It has a dev server, dependencies and a build. When it needs to look designed rather than default, that is the rest of this crew's job: `anydesign` to extract a direction from a reference deck, `ui-ux-pro-max` to choose type and palette, and the theme's own CSS to apply it. Slidev renders; it does not art-direct.
 
 **Hosting is `slidev build` and static files.** It exports an SPA — any static host takes it. `seoMeta:` and `og-image.png` matter for a link that will be shared, and they are set in the headmatter, before the build, not after.
 

@@ -32,7 +32,7 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 
 | Skill | One-liner | Disposition |
 |---|---|---|
-| `design-dna` | Reference UI → quantified design spec | vendored |
+| `anydesign` | Screenshot, URL or Figma → measured design.md + DTCG tokens | vendored |
 | `frontend-design` | Bold React + Tailwind UI | dependency |
 | `web-artifacts` | shadcn HTML artifacts | bundled |
 | `canvas-design` | Visual art to PNG / PDF | bundled |
@@ -123,7 +123,7 @@ Vendored copies live at `skills/<leaf>/vendor/` and are **unmodified**. Send fix
 | `superpowers` | [obra/superpowers](https://github.com/obra/superpowers) @ `896224c` (14 skills) | MIT |
 | `grill-me` | [mattpocock/skills](https://github.com/mattpocock/skills) (`grill-me` + `grilling`) | MIT |
 | `motion-ui` | [IPedrax/motion-ui](https://github.com/IPedrax/motion-ui) | MIT |
-| `design-dna` | [zanwei/design-dna](https://github.com/zanwei/design-dna) @ `9d9d795` | MIT |
+| `anydesign` | [uxKero/anydesign](https://github.com/uxKero/anydesign) @ `d81bd89` (without `examples/`) | MIT |
 | `slidev` | [slidevjs/slidev](https://github.com/slidevjs/slidev) @ `a8d8ff7` (`skills/slidev`, 53 references) | MIT |
 | `ui-ux-pro-max` | bundled by the maintainer | see `vendor/` |
 | `canvas-design` | [anthropics/skills](https://github.com/anthropics/skills) + 54 OFL fonts | Apache-2.0 |
