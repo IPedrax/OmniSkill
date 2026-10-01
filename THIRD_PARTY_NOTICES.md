@@ -34,6 +34,7 @@ All vendored copies are **unmodified**. Send fixes upstream, not here. OmniSkill
 | `uisfx` | An npm **library**, not a skill. OmniSkill's `skills/uisfx/SKILL.md` is original work that teaches its use; [`uisfx`](https://github.com/romainsimon/uisfx) itself installs from npm (code MIT, the 936 generated sounds CC0 1.0). |
 | `airship` | A **CLI**, not skill content. OmniSkill's `skills/airship/SKILL.md` is original work that teaches its use; [Airship](https://github.com/0xnyn/airship) by Nayan Kumar (**MIT**) runs from npm as [`@airshiplabs/cli`](https://www.npmjs.com/package/@airshiplabs/cli). |
 | `vgpu` | An npm **library**, not skill content. OmniSkill's `skills/vgpu/SKILL.md` is original work that teaches its use; [vgpu](https://github.com/vercel-labs/vgpu) by Vercel Labs (**MIT**) installs from npm, and its own docs ship inside the package. |
+| `logo-design` | Ships **1,432 trademarks** as reference material, which its MIT license expressly excludes, so it cannot be bundled in an MIT plugin. OmniSkill's `skills/logo-design/SKILL.md` is original work that routes to [logo-design-skill](https://github.com/kaankiziltug/logo-design-skill) (**MIT** code), cloned separately. |
 | `img2threejs` | A **Python toolkit** with its own router, not skill content to copy. OmniSkill's `skills/img2threejs/SKILL.md` is original work that routes to it; [img2threejs](https://github.com/img2threejs/img2threejs) (**Apache-2.0**) is cloned separately. |
 
 ### Named but not bundled
