@@ -17,7 +17,7 @@ const SKILLS = join(ROOT, 'skills');
 const REGISTRY = join(ROOT, 'references', 'registry.md');
 
 const ROUTERS = ['omniskill', 'dev', 'design', 'marketing', 'social-content', 'finance', 'ops', 'legal'];
-const EXPECTED_LEAVES = 49; // Design carries 12, Developers 7; the other five carry 6
+const EXPECTED_LEAVES = 50; // Design carries 13, Developers 7; the other five carry 6
 
 const errors = [];
 const warnings = [];

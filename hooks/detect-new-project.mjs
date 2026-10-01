@@ -14,7 +14,7 @@ import { tmpdir } from 'node:os';
 
 const SUGGESTION =
   'The user may be starting a new project. Before doing the work, use AskUserQuestion to offer the ' +
-  'OmniSkill workforce (49 skills across 7 departments: dev, design, marketing, social, finance, ops, legal). ' +
+  'OmniSkill workforce (50 skills across 7 departments: dev, design, marketing, social, finance, ops, legal). ' +
   'Name the specific department(s) that fit this request and why. Offer three choices: bring in the recommended ' +
   'crew, see all 7 departments first, or skip and continue normally. ' +
   'Do NOT load or act on any OmniSkill skill until the user picks. If they decline, drop it and do not ask again ' +

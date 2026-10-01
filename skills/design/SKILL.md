@@ -1,6 +1,6 @@
 ---
 name: design
-description: This skill should be used when the user needs the OmniSkill Design crew — extracting a design direction from a reference screenshot or URL, building React/Tailwind UI, shadcn HTML artifacts, visual art exported to PNG or PDF, developer slide decks, generative p5.js art, WebGPU shaders and effects, design-system and palette intelligence, editing the running app visually, UI animation with Framer Motion/GSAP/anime.js/Three.js/Lenis, interface sound effects, or animated Slack GIFs. Triggers on "/omniskill:design", "design a landing page", "make this UI look better", "make it look like this site", "extract the design from this screenshot", "edit my app visually", "point and click at my UI", "visual editor", "slide deck", "conference talk", "presentation with code", "shader", "WebGPU", "add animations", "scroll animation", "smooth scrolling", "add sound effects", "color palette", "design system", "make a GIF".
+description: This skill should be used when the user needs the OmniSkill Design crew — extracting a design direction from a reference screenshot or URL, building React/Tailwind UI, shadcn HTML artifacts, visual art exported to PNG or PDF, developer slide decks, generative p5.js art, WebGPU shaders and effects, image-to-Three.js model reconstruction, design-system and palette intelligence, editing the running app visually, UI animation with Framer Motion/GSAP/anime.js/Three.js/Lenis, interface sound effects, or animated Slack GIFs. Triggers on "/omniskill:design", "design a landing page", "make this UI look better", "make it look like this site", "extract the design from this screenshot", "edit my app visually", "point and click at my UI", "visual editor", "slide deck", "conference talk", "presentation with code", "shader", "WebGPU", "turn this image into a 3D model", "rebuild this in Three.js", "add animations", "scroll animation", "smooth scrolling", "add sound effects", "color palette", "design system", "make a GIF".
 when_to_use: Use for visual and interface work — layout, typography, color, motion, and generated visual assets.
 allowed-tools: Read Glob
 ---
@@ -24,6 +24,7 @@ allowed-tools: Read Glob
 | `uisfx` | Interface sound: semantic cues tied to state changes, off by default |
 | `algorithmic-art` | Generative, code-driven art with p5.js |
 | `vgpu` | The GPU: WebGPU shaders, fullscreen effects, compute — testable headless |
+| `img2threejs` | One reference image rebuilt as a procedural Three.js model, in code, gated pass by pass |
 | `slack-gif` | Short animated GIFs sized for Slack |
 
 ## Load it
@@ -36,7 +37,7 @@ Decide direction before writing markup. Two doors lead in: `design-dna` when the
 
 Match the target to the artifact: a shareable one-pager is `web-artifacts`, a real app is `frontend-design`, a printed or posted image is `canvas-design`, a talk is `slidev`. Reach for `slidev` when the deck contains code, diagrams or math — that is what it is for. A pitch with none of that is Finance's `pitch-deck` for the narrative and `canvas-design` for the image; a Vite project is the wrong shape for a board update.
 
-Generative visuals split by runtime, not by look: `algorithmic-art` is a p5.js sketch on the CPU, `vgpu` is WebGPU when the work is a fullscreen effect, a shader background, a particle count p5 cannot reach, or a compute pass. A 3D scene with meshes and a camera is still `motion-ui` and Three.js. Check WebGPU support against the target before committing to it — there is no shader-level fallback.
+Generative visuals split by runtime, not by look: `algorithmic-art` is a p5.js sketch on the CPU, `vgpu` is WebGPU when the work is a fullscreen effect, a shader background, a particle count p5 cannot reach, or a compute pass. A 3D scene with meshes and a camera is still `motion-ui` and Three.js; when the scene needs a model that only exists as a picture, `img2threejs` builds it first and hands it over. It is expensive (six figures of tokens for one object), so quote the cost before starting. Check WebGPU support against the target before committing to it — there is no shader-level fallback.
 
 `airship` is the iteration pass, not a third door in. Once the interface exists and the dev server is up, it turns a click on the running page into the file and line that drew it, which beats describing a spacing problem in prose. Reaching for it before the direction is settled just produces uncommitted adjustments faster. It also spawns its own agent against the same files, so hand the working tree over cleanly — commit first, and let the user run the CLI themselves.
 
