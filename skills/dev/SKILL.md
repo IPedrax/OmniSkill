@@ -24,7 +24,7 @@ allowed-tools: Read Glob
 
 ## Load it
 
-Read `${CLAUDE_SKILL_DIR}/../<skill>/SKILL.md` and follow it.
+Read `${CLAUDE_SKILL_DIR}/../<skill>/SKILL.md` and follow it. Its paths that start with the CLAUDE_SKILL_DIR placeholder mean its own folder, `${CLAUDE_SKILL_DIR}/../<skill>/`: only the invoked skill gets the placeholder filled in, and Bash never sets it, so write that full path into any command it gives you.
 
 ## Routing notes
 

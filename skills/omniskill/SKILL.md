@@ -41,6 +41,8 @@ Read the department router's `SKILL.md` at `${CLAUDE_SKILL_DIR}/../<department>/
 
 To jump straight to a known specialist, read `${CLAUDE_SKILL_DIR}/../<skill-name>/SKILL.md` — for example `../dcf-model/SKILL.md`.
 
+Either way, a file you reach by reading it, not by invoking it, keeps its CLAUDE_SKILL_DIR placeholders raw. They mean that file's own folder, `${CLAUDE_SKILL_DIR}/../<name>/`, and Bash never sets the variable, so write the full path into any command it gives you.
+
 **Read leaf skills rather than invoking them.** Leaves set `disable-model-invocation: true`, so they cannot be auto-invoked; that is what keeps 54 skills out of the global skill-listing budget. The user can still run any leaf directly as `/omniskill:dcf-model`.
 
 ## Step 3 — work
