@@ -1,6 +1,6 @@
 ---
 name: dev
-description: This skill should be used when the user needs the OmniSkill Developers crew — stress-testing a plan before building, planning and TDD workflows, live version-exact library docs, building MCP servers, scaffolding new skills, browser-testing a web app, or persisting memory across sessions. Triggers on "/omniskill:dev", "grill me", "stress-test this plan", "set up TDD", "look up the docs for", "build an MCP server", "create a skill", "test my app in a browser".
+description: This skill should be used when the user needs the OmniSkill Developers crew — stress-testing a plan before building, planning and TDD workflows, live version-exact library docs, building MCP servers, scaffolding new skills, browser-testing a web app, searching, scraping or crawling websites, or persisting memory across sessions. Triggers on "/omniskill:dev", "grill me", "stress-test this plan", "set up TDD", "look up the docs for", "build an MCP server", "create a skill", "test my app in a browser", "scrape this site", "crawl", "search the web for".
 when_to_use: Use for engineering workflow and tooling tasks. For ordinary code edits in an existing repo, work directly instead.
 allowed-tools: Read Glob
 ---
@@ -19,6 +19,7 @@ allowed-tools: Read Glob
 | `mcp-builder` | Wiring Claude to an external tool or API as an MCP server |
 | `skill-creator` | Turning a repeated workflow into a reusable skill |
 | `webapp-testing` | Verifying a web app actually works in a browser |
+| `scrapling` | Reading the web: search, fetch past bot walls, map or crawl a site, pull structured data |
 | `claude-mem` | Carrying durable knowledge across sessions |
 
 ## Load it
@@ -28,6 +29,8 @@ Read `${CLAUDE_SKILL_DIR}/../<skill>/SKILL.md` and follow it.
 ## Routing notes
 
 `context7` is near-free and high-value: any question about a library's API, config, or version behaviour should route here before answering. Guessing at library APIs from memory is the single most common source of wrong code.
+
+`scrapling` is for other people's sites; `webapp-testing` is for the user's own app. `context7` still comes first for library docs.
 
 `superpowers` and `webapp-testing` compose — plan and build with the first, prove it works with the second.
 

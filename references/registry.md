@@ -8,7 +8,7 @@ Canonical map of the workforce. `scripts/check-registry.mjs` validates the tree 
 - `vendored` — adapter + the real upstream skill bundled verbatim under `skills/<name>/vendor/`, with its license. Nothing to install.
 - `separate` — adapter only; the upstream skill cannot be redistributed (proprietary) or is not skill content (an MCP server, a CLI), so it installs on its own.
 
-Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 53 skills out of the global skill listing budget.
+Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 54 skills out of the global skill listing budget.
 
 Every skill directory lives flat under `skills/`. Department routers are `dev`, `design`, `marketing`, `social-content`, `finance`, `ops`, `legal` — note the Social & Content router is `social-content` because the leaf skill `social` already owns that name.
 
@@ -25,6 +25,7 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 | `mcp-builder` | Wire Claude to any tool | bundled |
 | `skill-creator` | Scaffold your own skills | dependency |
 | `webapp-testing` | Browser-tests your app | authored |
+| `scrapling` | Search, map, crawl and extract the web locally | authored |
 | `claude-mem` | Memory across sessions | authored |
 
 ## 02 — Design · `/omniskill:design`
@@ -113,9 +114,9 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 
 ## Counts
 
-- **53 leaves** across 7 departments — Design carries 14, Developers 7, Marketing 7, Social & Content 7, the rest 6
+- **54 leaves** across 7 departments — Design carries 14, Developers 8, Marketing 7, Social & Content 7, the rest 6
 - Model-invocable: **8** (`omniskill` router + 7 departments)
-- Authored: **32** · Vendored: **13** · Separate: **8** (`xlsx`, `docx`, `context7`, `airship`, `vgpu`, `img2threejs`, `logo-design`, `local-leads`)
+- Authored: **33** · Vendored: **13** · Separate: **8** (`xlsx`, `docx`, `context7`, `airship`, `vgpu`, `img2threejs`, `logo-design`, `local-leads`)
 
 ## Upstream sources
 

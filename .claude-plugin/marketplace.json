@@ -6,14 +6,14 @@
     "email": "pedragamesoficial@gmail.com"
   },
   "metadata": {
-    "description": "The OmniSkill workforce: 53 skills across 7 departments (developers, design, marketing, social, finance, operations, legal), routed from one entry point."
+    "description": "The OmniSkill workforce: 54 skills across 7 departments (developers, design, marketing, social, finance, operations, legal), routed from one entry point."
   },
   "plugins": [
     {
       "name": "omniskill",
       "source": "./",
       "category": "workflow",
-      "description": "Your Claude workforce: 53 skills across 7 departments (developers, design, marketing, social, finance, operations, legal) behind one router. Invoke with /omniskill, or let it offer itself when you start a new project."
+      "description": "Your Claude workforce: 54 skills across 7 departments (developers, design, marketing, social, finance, operations, legal) behind one router. Invoke with /omniskill, or let it offer itself when you start a new project."
     }
   ]
 }
