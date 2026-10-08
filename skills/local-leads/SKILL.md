@@ -51,7 +51,17 @@ A raw list is a phone book. Before handing it over, ask what is being sold and s
 | Google profile, local SEO | Few reviews, no hours, no photos | `review_count` low, `open_hours` empty |
 | Booking, ordering | A busy place with no online booking | `reservations` / `order_online` empty or `null`, high reviews |
 
-Hand over the top 20 to 50 per segment, each with the one-line reason it is on the list. That reason is the opening line of the call. From there, `mktg-psychology` and Social & Content's `copywriting` write the outreach, and `cro` fixes the landing page they get sent to.
+Hand over the top 20 to 50 per segment, each with the one-line reason it is on the list. That reason is the opening line of the call.
+
+## Before the call: five minutes each
+
+The gap score says who; a few minutes per business says what to open with. Do it for the top 10 to 20 only, not the whole list:
+
+1. **Their own complaints.** Read `user_reviews` (recent reviews with text, rating and date; `-extra-reviews -json` pulls up to ~300). Find the complaint that repeats, in the customers' words: "só atende por telefone", "o site não abre", "nunca responde no Instagram". Quote it back; it beats any pitch you could write.
+2. **What they do now.** Open the site or the Instagram from `website` (Developers' `scrapling` fetches it). Is it maintained, when was the last post, does the booking link work?
+3. **Who to ask for.** The owner's name if the site, `descriptions` or an owner reply to a review gives it, so the call isn't to "the business".
+
+Write it as one line per lead under the gap reason: `complaint · current state · name`. Leave a field empty rather than guessing. From there, `mktg-psychology` and Social & Content's `copywriting` write the outreach, and `cro` fixes the landing page they get sent to.
 
 ## House rules
 
