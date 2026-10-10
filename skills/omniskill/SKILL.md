@@ -1,13 +1,13 @@
 ---
 name: omniskill
-description: This skill should be used when the user starts a new project or asks for the OmniSkill workforce. Triggers on "build me a", "create a new app", "start a new project", "from scratch", "scaffold a", "new SaaS/site/landing page", "/omniskill", "what crews do I have", or any request that spans business functions (code, design, marketing, content, finance, ops, legal). Routes to 54 specialist skills across 7 departments.
+description: This skill should be used when the user starts a new project or asks for the OmniSkill workforce. Triggers on "build me a", "create a new app", "start a new project", "from scratch", "scaffold a", "new SaaS/site/landing page", "/omniskill", "what crews do I have", or any request that spans business functions (code, design, marketing, content, finance, ops, legal). Routes to 55 specialist skills across 7 departments.
 when_to_use: Use at the start of a new project to pick the right crew, or whenever a task belongs to a specialist department rather than general coding. Do not use for a small edit inside an existing codebase.
 allowed-tools: Read Glob
 ---
 
 # OmniSkill — your Claude workforce
 
-54 skills. 7 crews. One workspace.
+55 skills. 7 crews. One workspace.
 
 ## Step 0 — the approval gate (mandatory)
 
@@ -33,7 +33,7 @@ When the user typed `/omniskill` themselves, skip this step entirely — they al
 | 06 Operations | `/omniskill:ops` | Run the business like a machine | Your ops backbone |
 | 07 Legal | `/omniskill:legal` | Read the fine print for you | Your legal desk |
 
-To see the full 54-skill map with one-liners, read `${CLAUDE_SKILL_DIR}/../../references/registry.md`.
+To see the full 55-skill map with one-liners, read `${CLAUDE_SKILL_DIR}/../../references/registry.md`.
 
 ## Step 2 — load the specialist
 
@@ -43,7 +43,7 @@ To jump straight to a known specialist, read `${CLAUDE_SKILL_DIR}/../<skill-name
 
 Either way, a file you reach by reading it, not by invoking it, keeps its CLAUDE_SKILL_DIR placeholders raw. They mean that file's own folder, `${CLAUDE_SKILL_DIR}/../<name>/`, and Bash never sets the variable, so write the full path into any command it gives you.
 
-**Read leaf skills rather than invoking them.** Leaves set `disable-model-invocation: true`, so they cannot be auto-invoked; that is what keeps 54 skills out of the global skill-listing budget. The user can still run any leaf directly as `/omniskill:dcf-model`.
+**Read leaf skills rather than invoking them.** Leaves set `disable-model-invocation: true`, so they cannot be auto-invoked; that is what keeps 55 skills out of the global skill-listing budget. The user can still run any leaf directly as `/omniskill:dcf-model`.
 
 ## Step 3 — work
 

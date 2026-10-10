@@ -1,6 +1,6 @@
 # Third-party notices
 
-OmniSkill itself is MIT (see [LICENSE](LICENSE)). Thirteen skills are **vendored verbatim** from upstream projects and remain under their own licenses. Each ships its license file alongside the code.
+OmniSkill itself is MIT (see [LICENSE](LICENSE)). Fourteen skills are **vendored verbatim** from upstream projects and remain under their own licenses. Each ships its license file alongside the code.
 
 ## Vendored
 
@@ -11,6 +11,7 @@ OmniSkill itself is MIT (see [LICENSE](LICENSE)). Thirteen skills are **vendored
 | `motion-ui` | [IPedrax/motion-ui](https://github.com/IPedrax/motion-ui) | MIT | `skills/motion-ui/vendor/` |
 | `anydesign` | [uxKero/anydesign](https://github.com/uxKero/anydesign) @ `d81bd89` — Alan Ponce (v0.6.0, `examples/` omitted) | MIT | `skills/anydesign/vendor/` |
 | `brag` | [latent-spaces/brag](https://github.com/latent-spaces/brag) @ `d06a77f` — Shunit Haviv Hakimi (`skills/brag-slim` only; the full `/brag` and its ende.app music are not included) | MIT | `skills/brag/vendor/` |
+| `rea` | [morluto/rea](https://github.com/morluto/rea) via the `rea-agents@6.3.0` npm package (`skills/reverse-engineer-anything`, skill version 34) | MIT | `skills/rea/vendor/` |
 | `slidev` | [slidevjs/slidev](https://github.com/slidevjs/slidev) @ `a8d8ff7` — Anthony Fu (`skills/slidev`, 53 references) | MIT | `skills/slidev/vendor/` |
 | `canvas-design` | [anthropics/skills](https://github.com/anthropics/skills) | Apache-2.0 | `skills/canvas-design/vendor/` |
 | `web-artifacts` | [anthropics/skills](https://github.com/anthropics/skills) (`web-artifacts-builder`) | Apache-2.0 | `skills/web-artifacts/vendor/` |
