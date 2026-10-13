@@ -17,7 +17,7 @@ allowed-tools: Read Glob
 | `ui-ux-pro-max` | Choosing the direction from scratch: style, palette, font pairing, layout system. **Start here** when there is no reference. |
 | `frontend-design` | Building the actual React + Tailwind interface |
 | `web-artifacts` | A self-contained shadcn/HTML artifact rather than a project |
-| `make-interfaces-feel-better` | The polish pass on a built interface: radius, alignment, shadows, type, press and motion details; reviews code with severity-ranked findings |
+| `better-interfaces` | The polish pass on a built interface: radius, alignment, shadows, type, press and motion details; reviews code with severity-ranked findings |
 | `tabler-icons` | Icons for an interface: search 5,184 by meaning, get inline SVG or the React/Vue/Svelte component |
 | `logo-design` | Logos as real SVG: brief, three concepts, 16 px and one-colour audits, favicons and guidelines |
 | `canvas-design` | Static visual art exported to PNG or PDF (posters, covers, diagrams) |

@@ -39,7 +39,7 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 | `web-artifacts` | shadcn HTML artifacts | bundled |
 | `logo-design` | Logos as SVG, audited, with delivery variants | separate |
 | `tabler-icons` | 5,184 MIT icons, searched by meaning | separate |
-| `make-interfaces-feel-better` | Interface polish rules plus a review mode | vendored |
+| `better-interfaces` | Interface polish rules plus a review mode | vendored |
 | `canvas-design` | Visual art to PNG / PDF | bundled |
 | `slidev` | Markdown decks with live code | vendored |
 | `airship` | Visual editor over the running app | separate |
@@ -134,7 +134,7 @@ Vendored copies live at `skills/<leaf>/vendor/` and are **unmodified**. Send fix
 | `anydesign` | [uxKero/anydesign](https://github.com/uxKero/anydesign) @ `d81bd89` (without `examples/`) | MIT |
 | `brag` | [latent-spaces/brag](https://github.com/latent-spaces/brag) @ `d06a77f` (`skills/brag-slim` only) | MIT |
 | `rea` | [morluto/rea](https://github.com/morluto/rea) via `rea-agents@6.3.0` (`skills/reverse-engineer-anything`) | MIT |
-| `make-interfaces-feel-better` | [jakubkrehel/make-interfaces-feel-better](https://github.com/jakubkrehel/make-interfaces-feel-better) @ `35545ea` | MIT |
+| `better-interfaces` | [jakubkrehel/make-interfaces-feel-better](https://github.com/jakubkrehel/make-interfaces-feel-better) @ `35545ea` | MIT |
 | `startup-council` | [Jakeschincariol/founder-skill](https://github.com/Jakeschincariol/founder-skill) @ `fd9385b` (eleven `founder-*` skills) | MIT |
 | `slidev` | [slidevjs/slidev](https://github.com/slidevjs/slidev) @ `a8d8ff7` (`skills/slidev`, 53 references) | MIT |
 | `ui-ux-pro-max` | bundled by the maintainer | see `vendor/` |
