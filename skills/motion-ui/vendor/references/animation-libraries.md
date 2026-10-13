@@ -296,6 +296,20 @@ Lenis already disables its own smoothing and makes programmatic scrolls instant 
 `prefers-reduced-motion: reduce` is set. Read `lenis.prefersReducedMotion` to make your own
 scroll-linked animations agree with it rather than duplicating the media query.
 
+### 6. Scrollable areas inside the page
+Lenis listens to the wheel and touch on the whole page, so any inner element with its own scroll
+(a modal body, a dropdown list, a chat panel, a code block, a map) stops scrolling: Lenis captures
+the gesture and moves the page instead. Mark each one:
+
+```html
+<div class="modal-body" data-lenis-prevent>...</div>
+```
+
+`data-lenis-prevent-wheel`, `-touch`, `-vertical` and `-horizontal` narrow it to one input or one
+axis (a horizontal carousel inside a vertical page wants `data-lenis-prevent-horizontal`). After
+adding Lenis, scroll every overflow container once by wheel and by touch; this is the most common
+Lenis bug after the double rAF loop.
+
 ### When not to reach for it
 Lenis takes over native scrolling. That is fine on a marketing page and wrong almost everywhere
 else: it interferes with find-in-page landing position, native scroll restoration, and some

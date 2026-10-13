@@ -126,7 +126,8 @@ Verify the install succeeded (dependency appears in `package.json`) before proce
 - Always: honor `prefers-reduced-motion` (pause idle loops too — Three.js auto-spin, infinite tweens),
   animate transform/opacity for 2D, match existing tokens, keep components accessible (3D/decorative SVG
   needs a text/`aria` fallback). For Three.js, dispose GPU resources on teardown and cap pixel ratio.
-  With Lenis, exactly one thing may own the rAF loop (`autoRaf` **or** `gsap.ticker.add`, never both).
+  With Lenis, exactly one thing may own the rAF loop (`autoRaf` **or** `gsap.ticker.add`, never both),
+  and every inner scroll container (modal, dropdown, chat panel) gets `data-lenis-prevent`.
   Run the project's typecheck/lint if available; offer to start the dev server (or use the `/run` skill).
 - Before reporting done, run the eight-point checklist at the end of `references/motion-craft.md`.
 
