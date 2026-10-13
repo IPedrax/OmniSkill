@@ -1,0 +1,27 @@
+{
+  "business": "Moss Matcha Bar (an example: a walk-in matcha café)",
+  "unit": "cup",
+  "price": 6.50,
+  "variable": [
+    {"label": "Matcha (ceremonial, 2g)", "cost": 0.92},
+    {"label": "Oat milk", "cost": 0.38},
+    {"label": "Cup, lid, straw", "cost": 0.24},
+    {"label": "Card fees", "cost": 0.20}
+  ],
+  "fixed_monthly": [
+    {"label": "Labour", "cost": 15500},
+    {"label": "Rent + utilities", "cost": 11040}
+  ],
+  "startup": [
+    {"label": "Lease deposit", "cost": 8400},
+    {"label": "Build-out", "cost": 6900},
+    {"label": "Equipment", "cost": 4250},
+    {"label": "Signage", "cost": 1850},
+    {"label": "Opening inventory", "cost": 2380},
+    {"label": "Launch ads", "cost": 1500}
+  ],
+  "days_per_month": 30,
+  "capacity_per_day": 600,
+  "plan_per_day": 383,
+  "ramp_per_day": [140, 170, 195, 215, 235, 250, 262, 272, 280, 287, 290, 292]
+}
