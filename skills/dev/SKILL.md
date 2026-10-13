@@ -1,6 +1,6 @@
 ---
 name: dev
-description: This skill should be used when the user needs the OmniSkill Developers crew — stress-testing a plan before building, planning and TDD workflows, live version-exact library docs, building MCP servers, scaffolding new skills, browser-testing a web app, searching, scraping or crawling websites, reverse-engineering how an app or site works, or persisting memory across sessions. Triggers on "/omniskill:dev", "grill me", "stress-test this plan", "set up TDD", "look up the docs for", "build an MCP server", "create a skill", "test my app in a browser", "scrape this site", "crawl", "search the web for", "how does this app do X", "reverse engineer".
+description: This skill should be used when the user needs the OmniSkill Developers crew — stress-testing a plan before building, planning and TDD workflows, live version-exact library docs, building MCP servers, scaffolding new skills, browser-testing a web app, searching, scraping or crawling websites, reading PDFs and books as Markdown, reverse-engineering how an app or site works, or persisting memory across sessions. Triggers on "/omniskill:dev", "grill me", "stress-test this plan", "set up TDD", "look up the docs for", "build an MCP server", "create a skill", "test my app in a browser", "scrape this site", "crawl", "search the web for", "how does this app do X", "reverse engineer", "convert this PDF", "read this book".
 when_to_use: Use for engineering workflow and tooling tasks. For ordinary code edits in an existing repo, work directly instead.
 allowed-tools: Read Glob
 ---
@@ -20,6 +20,7 @@ allowed-tools: Read Glob
 | `skill-creator` | Turning a repeated workflow into a reusable skill |
 | `webapp-testing` | Verifying a web app actually works in a browser |
 | `scrapling` | Reading the web: search, fetch past bot walls, map or crawl a site, pull structured data |
+| `pdf-to-md` | Making a PDF or a whole book readable by AI: Markdown chapters with page anchors, audited word by word against the PDF so nothing is dropped silently |
 | `rea` | How a shipped app or site works without its source: Electron bundles, .NET, APKs, binaries, with evidence |
 | `claude-mem` | Carrying durable knowledge across sessions |
 
