@@ -8,7 +8,7 @@ Canonical map of the workforce. `scripts/check-registry.mjs` validates the tree 
 - `vendored` — adapter + the real upstream skill bundled verbatim under `skills/<name>/vendor/`, with its license. Nothing to install.
 - `separate` — adapter only; the upstream skill cannot be redistributed (proprietary) or is not skill content (an MCP server, a CLI), so it installs on its own.
 
-Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 59 skills out of the global skill listing budget.
+Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 60 skills out of the global skill listing budget.
 
 Every skill directory lives flat under `skills/`. Department routers are `dev`, `design`, `marketing`, `social-content`, `finance`, `ops`, `legal` — note the Social & Content router is `social-content` because the leaf skill `social` already owns that name.
 
@@ -27,6 +27,7 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 | `webapp-testing` | Browser-tests your app | authored |
 | `scrapling` | Search, map, crawl and extract the web locally | authored |
 | `pdf-to-md` | PDFs to AI-readable Markdown, audited word by word | authored |
+| `moli` | Headless browser built from source, for JS pages without Chromium | authored |
 | `rea` | Reverse-engineer shipped apps, with evidence | vendored |
 | `claude-mem` | Memory across sessions | authored |
 
@@ -119,9 +120,9 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 
 ## Counts
 
-- **59 leaves** across 7 departments — Design carries 16, Developers 10, Marketing 7, Social & Content 7, Finance 7, the rest 6
+- **60 leaves** across 7 departments — Design carries 16, Developers 11, Marketing 7, Social & Content 7, Finance 7, the rest 6
 - Model-invocable: **8** (`omniskill` router + 7 departments)
-- Authored: **34** · Vendored: **16** · Separate: **9** (`xlsx`, `docx`, `context7`, `airship`, `vgpu`, `img2threejs`, `logo-design`, `local-leads`, `tabler-icons`)
+- Authored: **35** · Vendored: **16** · Separate: **9** (`xlsx`, `docx`, `context7`, `airship`, `vgpu`, `img2threejs`, `logo-design`, `local-leads`, `tabler-icons`)
 
 ## Upstream sources
 

@@ -47,7 +47,7 @@ $W crawl https://example.com/docs/ -n 30 --out crawl-docs --css main
 - **search** asks DuckDuckGo Lite, then Bing, each as a plain request and then once in the stealth browser. Bing serves decoy results to scrapers, so a result set only counts when most of it mentions a word from the query; a set that fails moves on to the next attempt instead of coming back as an answer.
 - **map** reads `robots.txt` and `/sitemap.xml`, follows sitemap indexes and gzip, and lists URLs without fetching them (`"source": "sitemap"`). With no sitemap it discovers by crawling up to `-n` pages (`"source": "links"`).
 - **crawl** stays inside the start URL's host, converts each page to Markdown in `--out`, and prints only `url`, `title` and `chars`. Read the files you need; never cat the whole directory into the conversation. Narrow the start URL (`/docs/`, not `/`) and use `--css` to drop navigation.
-- `--stealth` on any of them uses the real browser: seconds per page instead of a fraction of one, so only after a plain run was blocked.
+- `--engine moli` renders JavaScript without Chromium (see `moli`; `--css` unsupported). `--engine chromium` (alias `--stealth`) uses the real browser: seconds per page instead of a fraction of one, so only after a plain or moli run was blocked.
 - `web.py selftest` checks the parsers offline.
 
 ## JSON
@@ -68,7 +68,7 @@ Firecrawl's schema extraction is an LLM reading the page. Here, Claude is that L
 
 ## Where it sits in the crew
 
-`context7` comes first for library docs; this is for everything else on the web. `webapp-testing` drives the user's own app in a browser to test it; this reads other people's sites. For local businesses from Google Maps, Marketing's `local-leads` has its own scraper.
+`context7` comes first for library docs; this is for everything else on the web. `webapp-testing` drives the user's own app in a browser to test it; this reads other people's sites. `moli` covers JavaScript pages without a browser. For local businesses from Google Maps, Marketing's `local-leads` has its own scraper.
 
 ## Source
 

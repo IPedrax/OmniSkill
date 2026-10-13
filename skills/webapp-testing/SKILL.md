@@ -18,6 +18,8 @@ Use whichever browser automation is available in the session:
 - **Chrome DevTools MCP** (`mcp__chrome-devtools__*`) — adds `performance_start_trace` and `lighthouse_audit` for performance work
 - **The in-app browser** (`mcp__Claude_Browser__*`) — `read_page` returns an accessibility tree with `ref_N` handles
 
+Moli is not a driver here: on dynamic apps its layout goes stale and clicks fail (see `moli`). Stay on Chromium-based drivers.
+
 Prefer the **accessibility snapshot over a screenshot** for verifying content and structure. It is faster, cheaper, deterministic, and gives stable element handles. Screenshots are for visual questions only.
 
 ## The flow

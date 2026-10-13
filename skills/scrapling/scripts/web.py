@@ -3,8 +3,8 @@
 
 Run with the Python that has Scrapling installed:
     $(uv tool dir)/scrapling/bin/python web.py search "query" [-n 10] [--stealth]
-    $(uv tool dir)/scrapling/bin/python web.py map https://site [-n 500] [--stealth]
-    $(uv tool dir)/scrapling/bin/python web.py crawl https://site [-n 20] [--out DIR] [--css SEL] [--stealth]
+    $(uv tool dir)/scrapling/bin/python web.py map https://site [-n 500] [--engine http|moli|chromium]
+    $(uv tool dir)/scrapling/bin/python web.py crawl https://site [-n 20] [--out DIR] [--css SEL] [--engine http|moli|chromium]
     $(uv tool dir)/scrapling/bin/python web.py selftest
 
 Every command prints JSON lines on stdout. crawl writes each page as Markdown under --out
@@ -14,13 +14,19 @@ import argparse
 import base64
 import json
 import logging
+import hashlib
 import re
+import shutil
+import subprocess
 import sys
 import unicodedata
-from urllib.parse import parse_qs, quote_plus, urlparse
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+from urllib.parse import parse_qs, quote_plus, urldefrag, urljoin, urlparse
 
 from scrapling.fetchers import AsyncStealthySession, Fetcher, StealthyFetcher
-from scrapling.spiders.links import LinkExtractor
+from scrapling.parser import Selector
+from scrapling.spiders.links import IGNORED_EXTENSIONS, LinkExtractor
 from scrapling.spiders.templates.crawler import CrawlRule
 from scrapling.spiders.templates.site_to_markdown import SiteToMarkdownSpider
 from scrapling.spiders.templates.sitemap import SitemapSpider
@@ -109,7 +115,7 @@ def stealth_sessions(spider, manager, stealth):
         super(type(spider), spider).configure_sessions(manager)
 
 
-def site_map(url, limit, stealth):
+def site_map(url, limit, engine):
     root = f"{urlparse(url).scheme}://{urlparse(url).netloc}"
     found = []
 
@@ -119,7 +125,7 @@ def site_map(url, limit, stealth):
         logging_level = logging.ERROR
 
         def configure_sessions(self, manager):
-            stealth_sessions(self, manager, stealth)
+            stealth_sessions(self, manager, engine == "chromium")
 
         def _dispatch(self, response, url, rules):  # record, never fetch: a map lists, it doesn't read
             if url not in found and len(found) < limit:
@@ -130,14 +136,16 @@ def site_map(url, limit, stealth):
     source = "sitemap"
     if not found:  # no sitemap: discover by following links instead
         source = "links"
-        found = [p["url"] for p in crawl_pages(url, limit, stealth, out=None, css=None)]
+        found = [p["url"] for p in crawl_pages(url, limit, engine, out=None, css=None)]
     for u in found:
         emit({"url": u, "source": source})
 
 
 # --- crawl --------------------------------------------------------------------------------------
 
-def crawl_pages(url, limit, stealth, out, css):
+def crawl_pages(url, limit, engine, out, css):
+    if engine == "moli":
+        return crawl_pages_moli(url, limit, out, css)
     host = urlparse(url).netloc
 
     class Crawl(SiteToMarkdownSpider):
@@ -147,10 +155,11 @@ def crawl_pages(url, limit, stealth, out, css):
         max_pages = limit
         output_dir = out
         css_selector = css
+        robots_txt_obey = True
         logging_level = logging.ERROR
 
         def configure_sessions(self, manager):
-            stealth_sessions(self, manager, stealth)
+            stealth_sessions(self, manager, engine == "chromium")
 
         def rules(self):
             return [CrawlRule(LinkExtractor(allow_domains=host))]
@@ -158,9 +167,75 @@ def crawl_pages(url, limit, stealth, out, css):
     return list(Crawl().start().items)
 
 
-def crawl(url, limit, stealth, out, css):
+# --- moli engine (a Rust headless browser: renders JavaScript without Chromium) -----------------
+# Two calls per page: `--dump json` for the final URL, status and rendered HTML (links), and
+# `--dump markdown` for the content, because Moli's own Markdown is better than any rebuild of it.
+# ponytail: breadth-first, 4 parallel fetches, no per-host delay; add one if a site pushes back.
+
+def moli(dump, url, timeout=30):  # seconds; moli itself takes milliseconds
+    r = subprocess.run(["moli", "fetch", "--dump", dump, "--fail", "--obey-robots", "-t", str(timeout * 1000), url],
+                       capture_output=True, text=True, errors="replace")
+    return r.stdout if r.returncode == 0 and r.stdout.strip() else None
+
+
+def moli_links(html, base, host):
+    """Same-host http(s) links of a rendered page, fragments removed, assets skipped."""
+    out = []
+    for a in Selector(html, url=base).css("a[href]"):
+        link = urldefrag(urljoin(base, a.attrib.get("href", "")))[0]
+        u = urlparse(link)
+        if u.scheme in ("http", "https") and u.netloc == host and link not in out \
+                and u.path.rsplit(".", 1)[-1].lower() not in IGNORED_EXTENSIONS:
+            out.append(link)
+    return out
+
+
+def moli_page(url, host):
+    j = moli("json", url)
+    if not j:
+        print(f"skipped {url} (failed, robots.txt, or HTTP error)", file=sys.stderr)
+        return None
+    d = json.loads(j)
+    final = d.get("final_url") or url
+    return {"url": final, "title": d.get("title") or "", "markdown": moli("markdown", final) or "",
+            "links": moli_links(d.get("html", ""), final, host)}
+
+
+def file_name(url, used):
+    u = urlparse(url)
+    name = re.sub(r"[^A-Za-z0-9._-]+", "-", f"{u.netloc}{u.path}".strip("/")).strip("-")[:150] or "index"
+    if name in used:
+        name += "-" + hashlib.sha1(url.encode(), usedforsecurity=False).hexdigest()[:8]
+    used.add(name)
+    return name + ".md"
+
+
+def crawl_pages_moli(url, limit, out, css):
+    if not shutil.which("moli"):
+        sys.exit("moli is not installed; see the moli skill (it is built from source), or use --engine http")
+    if css:
+        sys.exit("--css is not supported with --engine moli; crawl without it, or use --engine http")
+    host, seen, frontier, pages, used = urlparse(url).netloc, {url}, [url], [], set()
+    with ThreadPoolExecutor(4) as pool:
+        while frontier and len(pages) < limit:
+            batch, frontier = frontier[: limit - len(pages)], frontier[limit - len(pages):]
+            for p in pool.map(lambda u: moli_page(u, host), batch):
+                if p:
+                    pages.append(p)
+                    for link in p["links"]:
+                        if link not in seen:
+                            seen.add(link)
+                            frontier.append(link)
+    if out:
+        Path(out).mkdir(parents=True, exist_ok=True)
+        for p in pages:
+            (Path(out) / file_name(p["url"], used)).write_text(p["markdown"], encoding="utf-8")
+    return pages
+
+
+def crawl(url, limit, engine, out, css):
     out = out or "crawl-" + re.sub(r"[^A-Za-z0-9.-]", "-", urlparse(url).netloc)
-    pages = crawl_pages(url, limit, stealth, out, css)
+    pages = crawl_pages(url, limit, engine, out, css)
     for p in pages:
         emit({"url": p["url"], "title": p["title"], "chars": len(p["markdown"]), "dir": out})
 
@@ -182,6 +257,12 @@ def selftest():
     assert on_topic(good, "arch linux pacman hooks") == good
     assert on_topic(decoy + good, "arch linux pacman hooks") == []
     assert on_topic([{"title": "Clínica Odontológica", "url": "https://x.com", "snippet": ""}], "clinica odontologica") != []
+    base = "https://x.com/docs/a"
+    html = '<a href="b">1</a><a href="/docs/c#frag">2</a><a href="https://other.com/">3</a><a href="/logo.png">4</a><a href="mailto:a@b.c">5</a><a href="b">6</a>'
+    assert moli_links(html, base, "x.com") == ["https://x.com/docs/b", "https://x.com/docs/c"], moli_links(html, base, "x.com")
+    used = set()
+    assert file_name("https://x.com/", used) == "x.com.md" and file_name("https://x.com/a/b?q=1", used) == "x.com-a-b.md"
+    assert file_name("https://x.com/a/b?q=2", used).startswith("x.com-a-b-")
     print("selftest ok")
 
 
@@ -193,15 +274,18 @@ def main():
     c = sub.add_parser("crawl"); c.add_argument("url"); c.add_argument("-n", type=int, default=20)
     c.add_argument("--out"); c.add_argument("--css")
     for p in (s, m, c):
-        p.add_argument("--stealth", action="store_true", help="real browser, for bot-protected sites")
+        p.add_argument("--stealth", action="store_true", help="Chromium stealth browser, for bot-protected sites (same as --engine chromium)")
+    for p in (m, c):
+        p.add_argument("--engine", choices=["http", "moli", "chromium"], default="http",
+                       help="http: no JavaScript; moli: JavaScript, no Chromium; chromium: stealth browser")
     sub.add_parser("selftest")
     a = ap.parse_args()
     if a.cmd == "search":
         search(a.query, a.n, a.stealth)
     elif a.cmd == "map":
-        site_map(a.url, a.n, a.stealth)
+        site_map(a.url, a.n, "chromium" if a.stealth else a.engine)
     elif a.cmd == "crawl":
-        crawl(a.url, a.n, a.stealth, a.out, a.css)
+        crawl(a.url, a.n, "chromium" if a.stealth else a.engine, a.out, a.css)
     else:
         selftest()
 
