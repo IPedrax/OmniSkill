@@ -6,3 +6,6 @@ node_modules/
 
 # Local Claude Code state — never ship
 .claude/settings.local.json
+
+# Scan output the compliance plugin regenerates here
+.compliance/
