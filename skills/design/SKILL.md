@@ -1,6 +1,6 @@
 ---
 name: design
-description: This skill should be used when the user needs the OmniSkill Design crew — extracting a design system or one element from a screenshot, URL or Figma file, building React/Tailwind UI, shadcn HTML artifacts, visual art exported to PNG or PDF, developer slide decks, generative p5.js art, WebGPU shaders and effects, image-to-Three.js models, SVG logo design, interface icons, design-system and palette intelligence, editing the running app visually, UI animation with Framer Motion/GSAP/anime.js/Three.js/Lenis, interface sound effects, or animated Slack GIFs. Triggers on "/omniskill:design", "design a landing page", "make this UI look better", "make it look like this site", "extract the design from this screenshot", "copy this navbar", "edit my app visually", "design a logo", "add icons", "slide deck", "conference talk", "polish the UI details", "shader", "WebGPU", "image to 3D model", "add animations", "scroll animation", "smooth scrolling", "add sound effects", "color palette", "design system", "make a GIF".
+description: This skill should be used when the user needs the OmniSkill Design crew — extracting a design system or one element from a screenshot, URL or Figma file, building React/Tailwind UI, shadcn HTML artifacts, visual art exported to PNG or PDF, developer slide decks, generative p5.js art, WebGPU shaders and effects, image-to-Three.js models, SVG logo design, interface icons, design-system and palette intelligence, editing the running app visually, UI animation with Framer Motion/GSAP/anime.js/Three.js/Lenis, interface sound effects, or animated Slack GIFs. Triggers on "/omniskill:design", "design a landing page", "make this UI look better", "make it look like this site", "extract the design from this screenshot", "copy this navbar", "edit my app visually", "design a logo", "add icons", "slide deck", "conference talk", "polish the UI details", "shader", "WebGPU", "image to 3D model", "add animations", "scroll animation", "smooth scrolling", "add sound effects", "color palette", "design system", "make a GIF", "resize without cropping", "reframe this image", "content-aware resize".
 when_to_use: Use for visual and interface work — layout, typography, color, motion, and generated visual assets.
 allowed-tools: Read Glob
 ---
@@ -18,6 +18,7 @@ allowed-tools: Read Glob
 | `frontend-design` | Building the actual React + Tailwind interface |
 | `web-artifacts` | A self-contained shadcn/HTML artifact rather than a project |
 | `better-interfaces` | The polish pass on a built interface: radius, alignment, shadows, type, press and motion details; reviews code with severity-ranked findings |
+| `smart-resize` | Reframing a still (16:9 to 9:16, banner to square) by carving away low-interest pixels instead of cropping or squashing; with protect and remove boxes |
 | `tabler-icons` | Icons for an interface: search 5,184 by meaning, get inline SVG or the React/Vue/Svelte component |
 | `logo-design` | Logos as real SVG: brief, three concepts, 16 px and one-colour audits, favicons and guidelines |
 | `canvas-design` | Static visual art exported to PNG or PDF (posters, covers, diagrams) |
