@@ -8,7 +8,7 @@ Canonical map of the workforce. `scripts/check-registry.mjs` validates the tree 
 - `vendored` — adapter + the real upstream skill bundled verbatim under `skills/<name>/vendor/`, with its license. Nothing to install.
 - `separate` — adapter only; the upstream skill cannot be redistributed (proprietary) or is not skill content (an MCP server, a CLI), so it installs on its own.
 
-Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 57 skills out of the global skill listing budget.
+Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 58 skills out of the global skill listing budget.
 
 Every skill directory lives flat under `skills/`. Department routers are `dev`, `design`, `marketing`, `social-content`, `finance`, `ops`, `legal` — note the Social & Content router is `social-content` because the leaf skill `social` already owns that name.
 
@@ -39,6 +39,7 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 | `web-artifacts` | shadcn HTML artifacts | bundled |
 | `logo-design` | Logos as SVG, audited, with delivery variants | separate |
 | `tabler-icons` | 5,184 MIT icons, searched by meaning | separate |
+| `make-interfaces-feel-better` | Interface polish rules plus a review mode | vendored |
 | `canvas-design` | Visual art to PNG / PDF | bundled |
 | `slidev` | Markdown decks with live code | vendored |
 | `airship` | Visual editor over the running app | separate |
@@ -117,9 +118,9 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 
 ## Counts
 
-- **57 leaves** across 7 departments — Design carries 15, Developers 9, Marketing 7, Social & Content 7, Finance 7, the rest 6
+- **58 leaves** across 7 departments — Design carries 16, Developers 9, Marketing 7, Social & Content 7, Finance 7, the rest 6
 - Model-invocable: **8** (`omniskill` router + 7 departments)
-- Authored: **33** · Vendored: **15** · Separate: **9** (`xlsx`, `docx`, `context7`, `airship`, `vgpu`, `img2threejs`, `logo-design`, `local-leads`, `tabler-icons`)
+- Authored: **33** · Vendored: **16** · Separate: **9** (`xlsx`, `docx`, `context7`, `airship`, `vgpu`, `img2threejs`, `logo-design`, `local-leads`, `tabler-icons`)
 
 ## Upstream sources
 
@@ -133,6 +134,7 @@ Vendored copies live at `skills/<leaf>/vendor/` and are **unmodified**. Send fix
 | `anydesign` | [uxKero/anydesign](https://github.com/uxKero/anydesign) @ `d81bd89` (without `examples/`) | MIT |
 | `brag` | [latent-spaces/brag](https://github.com/latent-spaces/brag) @ `d06a77f` (`skills/brag-slim` only) | MIT |
 | `rea` | [morluto/rea](https://github.com/morluto/rea) via `rea-agents@6.3.0` (`skills/reverse-engineer-anything`) | MIT |
+| `make-interfaces-feel-better` | [jakubkrehel/make-interfaces-feel-better](https://github.com/jakubkrehel/make-interfaces-feel-better) @ `35545ea` | MIT |
 | `startup-council` | [Jakeschincariol/founder-skill](https://github.com/Jakeschincariol/founder-skill) @ `fd9385b` (eleven `founder-*` skills) | MIT |
 | `slidev` | [slidevjs/slidev](https://github.com/slidevjs/slidev) @ `a8d8ff7` (`skills/slidev`, 53 references) | MIT |
 | `ui-ux-pro-max` | bundled by the maintainer | see `vendor/` |
