@@ -10,8 +10,8 @@
 Each check drives a small local page the way an agent would (find by role, click, type, read the
 text back, wait for a visible element). The page rebuilds its own DOM from scripts, which is what
 broke Moli v1.1.17: its layout is published lazily, so content added after load reads as invisible
-and empty. Exit status is 0 only when every check passes. Switch the Playwright MCP to Moli when
-this prints seven passes for it, not before.
+and empty. Exit status is 0 only when every check passes. Seven passes is necessary, not sufficient: confirm
+with a real app before switching the Playwright MCP to Moli.
 """
 import sys
 
