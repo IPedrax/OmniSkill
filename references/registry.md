@@ -8,7 +8,7 @@ Canonical map of the workforce. `scripts/check-registry.mjs` validates the tree 
 - `vendored` — adapter + the real upstream skill bundled verbatim under `skills/<name>/vendor/`, with its license. Nothing to install.
 - `separate` — adapter only; the upstream skill cannot be redistributed (proprietary) or is not skill content (an MCP server, a CLI), so it installs on its own.
 
-Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 61 skills out of the global skill listing budget.
+Invoke any leaf directly as `/omniskill:<name>`. Leaves set `disable-model-invocation: true`, so Claude reaches them through `/omniskill` or a department router rather than picking them on its own. That is deliberate: it keeps 62 skills out of the global skill listing budget.
 
 Every skill directory lives flat under `skills/`. Department routers are `dev`, `design`, `marketing`, `social-content`, `finance`, `ops`, `legal` — note the Social & Content router is `social-content` because the leaf skill `social` already owns that name.
 
@@ -42,6 +42,7 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 | `logo-design` | Logos as SVG, audited, with delivery variants | separate |
 | `smart-resize` | Content-aware image resize (seam carving) with protect and remove boxes | authored |
 | `tabler-icons` | 5,184 MIT icons, searched by meaning | separate |
+| `anatomy` | Interactive isometric figures that explain an idea as a working machine | separate |
 | `better-interfaces` | Interface polish rules plus a review mode | vendored |
 | `canvas-design` | Visual art to PNG / PDF | bundled |
 | `slidev` | Markdown decks with live code | vendored |
@@ -121,9 +122,9 @@ Every skill directory lives flat under `skills/`. Department routers are `dev`, 
 
 ## Counts
 
-- **61 leaves** across 7 departments — Design carries 17, Developers 11, Marketing 7, Social & Content 7, Finance 7, the rest 6
+- **62 leaves** across 7 departments — Design carries 18, Developers 11, Marketing 7, Social & Content 7, Finance 7, the rest 6
 - Model-invocable: **8** (`omniskill` router + 7 departments)
-- Authored: **36** · Vendored: **16** · Separate: **9** (`xlsx`, `docx`, `context7`, `airship`, `vgpu`, `img2threejs`, `logo-design`, `local-leads`, `tabler-icons`)
+- Authored: **36** · Vendored: **16** · Separate: **10** (`xlsx`, `docx`, `context7`, `airship`, `vgpu`, `img2threejs`, `logo-design`, `local-leads`, `tabler-icons`, `anatomy`)
 
 ## Upstream sources
 
@@ -160,3 +161,4 @@ Vendored copies live at `skills/<leaf>/vendor/` and are **unmodified**. Send fix
 | `local-leads` | A Go binary, not skill content | Release binary into `~/tools/google-maps-scraper`, called through a wrapper that sets `DISABLE_TELEMETRY=1` |
 | `logo-design` | Bundles 1,432 trademarks its MIT license does not cover | `git clone https://github.com/kaankiziltug/logo-design-skill.git ~/tools/logo-design-skill` |
 | `img2threejs` | A Python toolkit with its own router, shipped often | `git clone https://github.com/img2threejs/img2threejs.git ~/tools/img2threejs` |
+| `anatomy` | A 13 MB Node kit with examples that changes daily | Clone at the reviewed commit into `~/tools/anatomy` (install block in the leaf) |

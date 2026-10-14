@@ -45,6 +45,7 @@ All vendored copies are **unmodified**. Send fixes upstream, not here. OmniSkill
 | `tabler-icons` | An **icon set**, not skill content. OmniSkill's `skills/tabler-icons/SKILL.md` and `scripts/icons.py` are original work; [Tabler Icons](https://github.com/tabler/tabler-icons) by Paweł Kuna (**MIT**) installs from npm. |
 | `local-leads` | A **Go binary**, not skill content. OmniSkill's `skills/local-leads/SKILL.md` is original work that teaches its use; [google-maps-scraper](https://github.com/gosom/google-maps-scraper) by gosom (**MIT**) installs from its GitHub release. |
 | `logo-design` | Ships **1,432 trademarks** as reference material, which its MIT license expressly excludes, so it cannot be bundled in an MIT plugin. OmniSkill's `skills/logo-design/SKILL.md` is original work that routes to [logo-design-skill](https://github.com/kaankiziltug/logo-design-skill) (**MIT** code), cloned separately. |
+| `anatomy` | A **Node kit with examples**, not skill content to copy. OmniSkill's `skills/anatomy/SKILL.md` is original work that routes to it; [anatomy](https://github.com/wheresryan22/anatomy) by wheresryan22 (**MIT**) is cloned separately at `e6600ff`. |
 | `img2threejs` | A **Python toolkit** with its own router, not skill content to copy. OmniSkill's `skills/img2threejs/SKILL.md` is original work that routes to it; [img2threejs](https://github.com/img2threejs/img2threejs) (**Apache-2.0**) is cloned separately. |
 
 ### Named but not bundled
